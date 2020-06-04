@@ -18,7 +18,6 @@ import it.uniroma3.siw.taskmanager.repository.ProjectRepository;
 import it.uniroma3.siw.taskmanager.repository.TaskRepository;
 import it.uniroma3.siw.taskmanager.repository.UserRepository;
 import it.uniroma3.siw.taskmanager.services.ProjectService;
-import it.uniroma3.siw.taskmanager.services.TaskService;
 import it.uniroma3.siw.taskmanager.services.UserService;
 
 @SpringBootTest
@@ -33,8 +32,7 @@ class TaskmanagerApplicationTests {
 	private ProjectRepository projectRepository;
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private TaskService taskService;
+
 	@Autowired
 	private ProjectService projectService;
 	
