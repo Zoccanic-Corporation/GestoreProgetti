@@ -11,6 +11,7 @@ public class TaskmanagerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TaskmanagerApplication.class, args);
 	}
+	//Viorel sei bellssimo
 	
 	/** A reference to the environment of properties defined through the application.properties file.
 	 * It is automatically wired before launch.*/
