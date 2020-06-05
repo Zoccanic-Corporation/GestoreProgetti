@@ -47,21 +47,21 @@ class TaskmanagerApplicationTests {
 	}
 	@Test
 	public void testUpdateUser() {
-		User user1 = new User("mariorossi", "password", "mario", "rossi");
+		User user1 = new User("Mario", "Rossi");
 		user1 = userService.saveUser(user1);
 		assertEquals(user1.getId().longValue(), 1L);
-		assertEquals(user1.getUserName(), "mariorossi");
+		assertEquals(user1.getFirstName(), "Mario");
 		
-		User user2 = new User("lucabianchi", "password", "luca", "bianchi");
+		User user2 = new User("Luca", "Bianchi");
 		user2 = userService.saveUser(user2);
 		assertEquals(user2.getId().longValue(), 2L);
-		assertEquals(user2.getUserName(), "lucabianchi");
+		assertEquals(user2.getFirstName(), "Luca");
 		
-		User user1Update = new User("mariarossi", "password", "maria", "rossi");
+		User user1Update = new User("Maria", "Rossi");
 		user1Update.setId(user1.getId());
 		user1 = userService.saveUser(user1Update);
 		assertEquals(user1Update.getId().longValue(), 1L);
-		assertEquals(user1Update.getUserName(), "mariarossi");
+		assertEquals(user1Update.getFirstName(), "Maria");
 		
 		Project project1 = new Project("testproject1", "è il testproject1");
 		project1.setOwner(user1Update);

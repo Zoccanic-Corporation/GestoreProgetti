@@ -40,22 +40,32 @@ public class AuthenticationController {
 		return "registerUser";
 	}
 
-	@RequestMapping(value= {"/users/register"}, method = RequestMethod.POST)
-	public String registerUser(@Valid @ModelAttribute("userForm") User user,
-			BindingResult userBindingResult,
-			@Valid @ModelAttribute("credentialsForm") Credentials credentials,
-			BindingResult credentialsBindingResult,
-			Model model)  {
+	 /**
+     * This method is called when a GET request is sent by the user to URL "/register".
+     * This method prepares and dispatches the User registration view.
+     *
+     * @param model the Request model
+     * @return the name of the target view, that in this case is "register"
+     */
+    @RequestMapping(value = { "/users/register" }, method = RequestMethod.POST)
+    public String registerUser(@Valid @ModelAttribute("userForm") User user,
+                               BindingResult userBindingResult,
+                               @Valid @ModelAttribute("credentialsForm") Credentials credentials,
+                               BindingResult credentialsBindingResult,
+                               Model model) {
 
-		this.userValidator.validate(user,userBindingResult);
-		this.credentialsValidator.validate(credentials, credentialsBindingResult);
+        // validate user and credentials fields
+        this.userValidator.validate(user, userBindingResult);
+        this.credentialsValidator.validate(credentials, credentialsBindingResult);
 
-		if(!userBindingResult.hasErrors() && ! credentialsBindingResult.hasErrors()) {
-			credentials.setUser(user);
-			credentialsService.saveCredentials(credentials);
-			return "registrationSuccessful";
-		}
-		return "registerUser";
-	}
-
+        // if neither of them had invalid contents, store the User and the Credentials into the DB
+        if(!userBindingResult.hasErrors() && ! credentialsBindingResult.hasErrors()) {
+            // set the user and store the credentials;
+            // this also stores the User, thanks to Cascade.ALL policy
+            credentials.setUser(user);
+            credentialsService.saveCredentials(credentials);
+            return "registrationSuccessful";
+        }
+        return "registerUser";
+    }
 }

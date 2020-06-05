@@ -2,6 +2,7 @@ package it.uniroma3.siw.taskmanager.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,35 +21,30 @@ public class Project {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable = false, length = 100)
 	private String name;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	private User owner;
-	
-	@ManyToMany
+
+	@ManyToMany(fetch = FetchType.LAZY)
 	private List<User> members;
-	
-	public String getDescription() {
-		return description;
-	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
+
+	@Column
 	private String description;
-	
+
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JoinColumn(name="project_id")
 	private List<Task> tasks;
-	
+
 	public Project() {
 		this.members = new ArrayList<User>();
 		this.tasks = new ArrayList<Task>();
 	}
-	
+
 	public Project(String name, String description) {
 		this();
 		this.name = name;
@@ -62,7 +58,14 @@ public class Project {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	public String getDescription() {
+		return description;
+	}
 
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public String getName() {
 		return name;
 	}
@@ -94,36 +97,33 @@ public class Project {
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
-	
+
 	public void addMember(User member) {
 		this.members.add(member);
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
+	 @Override
+	    public String toString() {
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Project other = (Project) obj;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
-	}
+	        return "Project{" +
+	                "id=" + id +
+	                ", name='" + name + '\'' +
+	                ", description='" + description + '\'' +
+	                ", tasks=" + tasks +
+	                '}';
+	    }
 
-	
-	
-}
+	    // this is a semplification
+	    @Override
+	    public boolean equals(Object o) {
+	        if (this == o) return true;
+	        if (o == null || getClass() != o.getClass()) return false;
+	        Project project = (Project) o;
+	        return Objects.equals(name, project.name);
+	    }
+
+	    @Override
+	    public int hashCode() {
+	        return Objects.hash(name);
+	    }
+	}

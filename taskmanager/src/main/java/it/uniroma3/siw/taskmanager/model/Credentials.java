@@ -1,5 +1,8 @@
 package it.uniroma3.siw.taskmanager.model;
 
+import java.time.LocalDateTime;
+import java.util.Objects;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 @Entity
 public class Credentials {
@@ -29,6 +34,42 @@ public class Credentials {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
+	
+	/**
+     * The date that this User was created/loaded into the DB
+     */
+    @Column(updatable = false, nullable = false)
+    private LocalDateTime creationTimestamp;
+
+    /**
+     * The date of the last update for this User in the DB
+     */
+    @Column(nullable = false)
+    private LocalDateTime lastUpdateTimestamp;
+    
+    public Credentials() {
+    }
+
+    public Credentials(String userName, String password) {
+        this();
+        this.userName = userName;
+        this.password = password;
+    }
+
+    /**
+     * This method initializes the creationTimestamp and lastUpdateTimestamp of this User to the current instant.
+     * This method is called automatically just before the User is persisted thanks to the @PrePersist annotation.
+     */
+    @PrePersist
+    protected void onPersist() {
+        this.creationTimestamp = LocalDateTime.now();
+        this.lastUpdateTimestamp = LocalDateTime.now();
+    }
+    
+    @PreUpdate
+    protected void onUpdate() {
+        this.lastUpdateTimestamp = LocalDateTime.now();
+    }
 
 	public Long getId() {
 		return id;
@@ -69,37 +110,47 @@ public class Credentials {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Credentials other = (Credentials) obj;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (userName == null) {
-			if (other.userName != null)
-				return false;
-		} else if (!userName.equals(other.userName))
-			return false;
-		return true;
-	}
 	
-	
+    public LocalDateTime getCreationTimestamp() {
+        return creationTimestamp;
+    }
+
+    public void setCreationTimestamp(LocalDateTime creationTimestamp) {
+        this.creationTimestamp = creationTimestamp;
+    }
+
+    public LocalDateTime getLastUpdateTimestamp() {
+        return lastUpdateTimestamp;
+    }
+
+    public void setLastUpdateTimestamp(LocalDateTime lastUpdateTimestamp) {
+        this.lastUpdateTimestamp = lastUpdateTimestamp;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Credentials)) return false;
+        Credentials user = (Credentials) o;
+        return Objects.equals(userName, user.userName) &&
+                Objects.equals(role, user.role) &&
+                Objects.equals(creationTimestamp, user.creationTimestamp) &&
+                Objects.equals(lastUpdateTimestamp, user.lastUpdateTimestamp);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userName, role);
+    }
+
+    @Override
+    public String toString() {
+        return "Credentials{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", role='" + role + '\'' +
+                ", creationTimestamp=" + creationTimestamp +
+                ", lastUpdateTimestamp=" + lastUpdateTimestamp +
+                '}';
+    }
 }
