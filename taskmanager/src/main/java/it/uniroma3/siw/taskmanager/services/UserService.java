@@ -1,5 +1,6 @@
 package it.uniroma3.siw.taskmanager.services;
 
+import it.uniroma3.siw.taskmanager.model.Project;
 import it.uniroma3.siw.taskmanager.model.User;
 import it.uniroma3.siw.taskmanager.repository.UserRepository;
 
@@ -55,5 +56,10 @@ public class UserService {
         for(User user : iterable)
             result.add(user);
         return result;
+    }
+    
+    @Transactional
+    public List<User> getMembers(Project project){
+    	return this.userRepository.findByVisibleProjects(project);
     }
 }

@@ -39,7 +39,7 @@ public class UserController {
     @RequestMapping(value = { "/home" }, method = RequestMethod.GET)
     public String home(Model model) {
         User loggedUser = sessionData.getLoggedUser();
-        model.addAttribute("user", loggedUser);
+        model.addAttribute("loggedUser", loggedUser);
         return "home";
     }
 
@@ -54,8 +54,7 @@ public class UserController {
     public String me(Model model) {
         User loggedUser = sessionData.getLoggedUser();
         Credentials credentials = sessionData.getLoggedCredentials();
-        System.out.println(credentials.getPassword());
-        model.addAttribute("user", loggedUser);
+        model.addAttribute("loggedUser", loggedUser);
         model.addAttribute("credentials", credentials);
 
         return "userProfile";
@@ -71,7 +70,7 @@ public class UserController {
     @RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
     public String admin(Model model) {
         User loggedUser = sessionData.getLoggedUser();
-        model.addAttribute("user", loggedUser);
+        model.addAttribute("loggedUser", loggedUser);
         return "admin";
     }
 

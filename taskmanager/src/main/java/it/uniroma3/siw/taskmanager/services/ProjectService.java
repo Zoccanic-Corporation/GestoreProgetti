@@ -1,5 +1,6 @@
 package it.uniroma3.siw.taskmanager.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -36,5 +37,10 @@ public class ProjectService {
 	public Project shareProjectWithUser(Project project, User user) {
 		project.addMember(user);
 		return this.projectRepository.save(project);
+	}
+	
+	@Transactional
+	public List<Project> retrieveProjectsOwnedBy(User user){
+		return this.projectRepository.findByOwner(user);
 	}
 }
