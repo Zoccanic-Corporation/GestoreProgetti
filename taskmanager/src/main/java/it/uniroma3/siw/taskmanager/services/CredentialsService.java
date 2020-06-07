@@ -1,5 +1,7 @@
 package it.uniroma3.siw.taskmanager.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -44,4 +46,19 @@ public class CredentialsService {
 		return this.credentialsRepository.save(credentials);
 	}
 	
+	@Transactional
+	public List<Credentials> getAllCredentials(){
+		List<Credentials> result = new ArrayList<>();
+        Iterable<Credentials> iterable = this.credentialsRepository.findAll();
+        for(Credentials credentials : iterable)
+            result.add(credentials);
+        return result;
+	}
+	
+	@Transactional
+	public void deleteCredentials(String username) {
+		Optional<Credentials> credentials = this.credentialsRepository.findByUserName(username);
+		if(credentials.isPresent())
+			this.credentialsRepository.delete(credentials.get());
+	}
 }

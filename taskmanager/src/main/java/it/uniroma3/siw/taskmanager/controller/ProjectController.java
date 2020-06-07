@@ -87,4 +87,6 @@ public class ProjectController {
 		model.addAttribute("loggedUser", loggedUser);
 		return "addProject";
 	}
+	
+	
 }
