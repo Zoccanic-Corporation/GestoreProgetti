@@ -60,7 +60,7 @@ public class ProjectController {
 		model.addAttribute("loggedUser", loggedUser);
 		model.addAttribute("project", project);
 		model.addAttribute("members", members);
-		
+
 		return "project";
 	}
 	

@@ -4,16 +4,19 @@
 	  xmlns:th="https://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
+	<link href="../static/css/project.css" th:href="@{/css/project.css}" rel="stylesheet" />
 	<title>TaskManager</title>
 </head>
 <body>
+<div th:class="myDiv">
 <h1 th:text="${project.name}"></h1>
 <h4 th:text="${project.description}" style="color:gray"></h4>
+</div>
 <div th:if="${members.size() > 0}">
 	<h3>Shared with:</h3>
 	<ul>
 		<li th:each="member: ${members}">
-			<div th:text="$member.firstName} + ' ' + ${member.lastName}"></div>
+			<div th:text="${member.firstName} + ' ' + ${member.lastName}"></div>
 		</li>
 	</ul>
 </div>
@@ -26,5 +29,6 @@
 		</li>
 	</ul>
 </div>
+<h4><a th:href="${project.id}+'/task/add'">Aggiungi task</a></h4>
 </body>
 </html>
