@@ -62,4 +62,17 @@ public class UserService {
     public List<User> getMembers(Project project){
     	return this.userRepository.findByVisibleProjects(project);
     }
+ 
+    
+    @Transactional
+    public List<User> UsersToShareProject(Project project, User currentUser){
+    	List<User> users = this.getAllUsers();
+    	List<User> usersProject = this.getMembers(project);
+    	users.remove(currentUser);
+    	if(usersProject.size() != 0) {
+    		for(User u: usersProject)
+    			users.remove(u);
+    	}
+    	return users;
+    }
 }
