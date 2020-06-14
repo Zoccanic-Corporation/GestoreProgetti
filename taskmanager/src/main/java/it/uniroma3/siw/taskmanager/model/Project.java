@@ -31,7 +31,7 @@ public class Project {
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<User> members;
 
-
+   //INSERIRE ONE TO MANY verso TAG
 
 	@Column
 	private String description;
