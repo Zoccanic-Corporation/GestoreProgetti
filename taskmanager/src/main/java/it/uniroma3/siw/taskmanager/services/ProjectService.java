@@ -39,6 +39,7 @@ public class ProjectService {
 		return this.projectRepository.save(project);
 	}
 	
+
 	@Transactional
 	public List<Project> retrieveProjectsOwnedBy(User user){
 		return this.projectRepository.findByOwner(user);

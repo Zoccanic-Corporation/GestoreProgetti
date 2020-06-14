@@ -42,6 +42,11 @@ public class VisibilityController {
 		
 		users.remove(loggedUser);
 		
+		if(project.getMembers().size() != 0)
+		for(User u: project.getMembers()) 
+			users.remove(u);
+		
+		
 		model.addAttribute("project", project);
 		model.addAttribute("loggedUser", loggedUser);
 		model.addAttribute("users", users);
@@ -49,7 +54,7 @@ public class VisibilityController {
 	}
 	
 	@RequestMapping(value = {"/projects/{projectId}/user/add/{username}"}, method = RequestMethod.POST)
-	public String createProject(Model model, @PathVariable Long projectId, @PathVariable Long userId) {
+	public String createProject(Model model, @PathVariable("projectId") Long projectId, @PathVariable("username") Long userId) {
 		Project project = projectService.getProject(projectId);
 		User user = userService.getUser(userId);
 		
