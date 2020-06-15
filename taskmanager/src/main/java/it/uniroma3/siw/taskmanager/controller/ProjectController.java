@@ -39,8 +39,11 @@ public class ProjectController {
 	public String myOwnedProjects(Model model) {
 		User loggedUser = sessionData.getLoggedUser();
 		List<Project> projectsList = projectService.retrieveProjectsOwnedBy(loggedUser);
-	
-		model.addAttribute("projectsShare", loggedUser.getVisibleProjects());
+		List<Project> projectShare = projectService.findByUserVisibleProjects(loggedUser);
+		/*Da capire problema di loggedUser.getVisibleProject() che contiene doppioni dello stesso progetto*/
+		
+		
+		model.addAttribute("projectsShare", projectShare);
 		model.addAttribute("loggedUser", loggedUser);
 		model.addAttribute("projectsList", projectsList);
 		return "myOwnedProjects";

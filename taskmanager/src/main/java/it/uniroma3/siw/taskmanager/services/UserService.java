@@ -62,6 +62,7 @@ public class UserService {
     public List<User> getMembers(Project project){
     	return this.userRepository.findByVisibleProjects(project);
     }
+    
  
     
     @Transactional

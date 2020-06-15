@@ -39,6 +39,7 @@ public class ProjectService {
 		project.addMember(user);
 		return this.projectRepository.save(project);
 	}
+	 
 	
 
 	@Transactional
@@ -52,4 +53,8 @@ public class ProjectService {
 		return this.projectRepository.save(project);
 	}
 	
+	@Transactional
+	public List<Project> findByUserVisibleProjects(User user){
+		return this.projectRepository.findByMembers(user);
+	}
 }
