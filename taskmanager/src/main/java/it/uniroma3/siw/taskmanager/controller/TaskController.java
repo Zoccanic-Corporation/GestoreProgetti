@@ -1,6 +1,8 @@
 package it.uniroma3.siw.taskmanager.controller;
 
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +36,11 @@ public class TaskController {
 	public String myNewTask(Model model, @PathVariable Long projectId) {
 		User loggedUser = sessionData.getLoggedUser();
 		Project project = projectService.getProject(projectId);
+		List<User> shareUsers = project.getMembers();
 		
+		shareUsers.add(project.getOwner());
+		
+		model.addAttribute("shareUsers", shareUsers);
 		model.addAttribute("project", project);
 		model.addAttribute("loggedUser", loggedUser);
 		model.addAttribute("taskForm", new Task());
@@ -48,6 +54,8 @@ public class TaskController {
 		User loggedUser = sessionData.getLoggedUser();
 		Project project = projectService.getProject(projectId);
 		
+		
+		
 		taskValidator.validate(task, taskBindingResult);
 		if(!taskBindingResult.hasErrors()) {
 			task.setCompleted(false);
@@ -55,6 +63,7 @@ public class TaskController {
 			this.projectService.saveProject(project);
 			return "redirect:/projects/" + project.getId();
 		}
+		model.addAttribute("shareUsers", project.getMembers());
 		model.addAttribute("project", project);
 		model.addAttribute("loggedUser", loggedUser);
 		return "addTask";

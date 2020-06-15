@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TaskManager</title>
+</head>
+<body>
+<h1>Access Denied</h1>
+<h4>Non sei il proprietario di questo progetto</h4>
+<h4 th:text="'Contatta il proprietario ' +${project.owner.firstName} + ' ' + ${project.owner.lastName}"> </h4>
+<div> <h4><a th:href="'/projects/'+${project.id}">Torna al progetto</a></h4></div>
+</body>
+</html>

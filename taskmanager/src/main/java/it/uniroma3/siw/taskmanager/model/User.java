@@ -1,6 +1,10 @@
 package it.uniroma3.siw.taskmanager.model;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +49,8 @@ public class User {
     /**
      * The List of Projects visible by this User
      */
-    @ManyToMany(mappedBy = "members")
+   
+    @ManyToMany(mappedBy = "members", fetch = FetchType.EAGER)
     private List<Project> visibleProjects;
 
     /**
