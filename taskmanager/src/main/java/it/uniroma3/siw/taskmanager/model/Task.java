@@ -49,6 +49,9 @@ public class Task {
      */
     @Column(nullable = false)
     private LocalDateTime lastUpdateTimestamp;
+    
+	@ManyToOne(fetch = FetchType.EAGER)
+    private User user;
 
     public Task() {}
 
@@ -82,7 +85,15 @@ public class Task {
 
     // GETTERS AND SETTERS
 
-    public Long getId() {
+    public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Long getId() {
         return id;
     }
 

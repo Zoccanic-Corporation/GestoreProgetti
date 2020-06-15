@@ -53,17 +53,17 @@ public class VisibilityController {
 	@RequestMapping(value = {"/projects/{projectId}/user/add/{username}"}, method = RequestMethod.POST)
 	public String createProject(Model model, @PathVariable("projectId") Long projectId, @PathVariable("username") Long userId) {
 		Project project = projectService.getProject(projectId);
-		User loggedUser = sessionData.getLoggedUser();
+		//User loggedUser = sessionData.getLoggedUser();
 		User user = userService.getUser(userId);
 		//condividi il progetto all'utente
 		this.projectService.shareProjectWithUser(project, user);
 		//ricalcola la lista delle persone con cui condividire il progetto
-		List<User> users = userService.UsersToShareProject(project, loggedUser);
+		//List<User> users = userService.UsersToShareProject(project, loggedUser);
 	
-		model.addAttribute("project", project);
-		model.addAttribute("loggedUser", loggedUser);
-		model.addAttribute("users", users);
-		return "addUsers";
+		//model.addAttribute("project", project);
+		//model.addAttribute("loggedUser", loggedUser);
+		//model.addAttribute("users", users);
+		return "redirect:/projects/" + project.getId()+ "/user/add";
 		
 		
 	}
