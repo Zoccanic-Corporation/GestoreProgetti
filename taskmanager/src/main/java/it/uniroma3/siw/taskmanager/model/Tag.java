@@ -17,8 +17,10 @@ public class Tag {
 	private String nome;
 	@Column(length = 20)
 	private String colore;
-	@Column(length = 200)
+	@Column(length = 400)
 	private String descrizone;
+
+	public Tag() {}
 
 	public Tag(String nome,String colore,String descrizione) {
 		this.nome=nome;
