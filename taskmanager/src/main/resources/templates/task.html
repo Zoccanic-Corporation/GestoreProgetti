@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<link href="../static/css/project.css" th:href="@{/css/project.css}" rel="stylesheet" />
+	<title>TaskPage</title>
+</head>
+<body>
+<div>
+<h1 th:text="${task.name}"></h1>
+<h4 th:text="${task.description}" style="color:gray"></h4>
+<h3 th:text="'Delegated to'+${task.user.firstName}+' '+${task.user.lastName}"></h3>
+</div>
+
+<h6 th:text="'Owned by ' +${project.owner.firstName} + ' ' + ${project.owner.lastName}"> </h6>
+
+<h4><a th:href="${project.id}+''">Aggiorna task</a></h4> 
+<h4><a th:href="${project.id}+''">Cancella task</a></h4>
+<h4><a th:href="${project.id}+''">Aggiungi un tag</a></h4>
+<h4><a th:href="${project.id}+''">Commenta</a></h4>
+<footer><h4><a th:href="'/projects/'+${project.id}">Torna al progetto</a></h4></footer> 
+</body>
+</html>

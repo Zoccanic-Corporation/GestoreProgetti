@@ -19,6 +19,7 @@ import it.uniroma3.siw.taskmanager.model.Project;
 import it.uniroma3.siw.taskmanager.model.Task;
 import it.uniroma3.siw.taskmanager.model.User;
 import it.uniroma3.siw.taskmanager.services.ProjectService;
+import it.uniroma3.siw.taskmanager.services.TaskService;
 import it.uniroma3.siw.taskmanager.validator.TaskValidator;
 
 @Controller
@@ -31,6 +32,9 @@ public class TaskController {
 	
 	@Autowired
 	TaskValidator taskValidator;
+	
+	@Autowired
+	TaskService taskService;
 	
 	@RequestMapping(value = { "/projects/{projectId}/task/add"}, method = RequestMethod.GET)
 	public String myNewTask(Model model, @PathVariable Long projectId) {
@@ -61,11 +65,24 @@ public class TaskController {
 			task.setCompleted(false);
 			project.addTask(task);
 			this.projectService.saveProject(project);
-			return "redirect:/projects/" + project.getId();
+			return "redirect:/projects/"+project.getId();
 		}
 		model.addAttribute("shareUsers", project.getMembers());
 		model.addAttribute("project", project);
 		model.addAttribute("loggedUser", loggedUser);
 		return "addTask";
+	}
+	
+	@RequestMapping(value = {"/projects/{projectId}/task/manage/{taskId}"}, method = RequestMethod.GET)
+	public String myTask(Model model, @PathVariable("taskId") Long taskId, @PathVariable("projectId") Long projectId){
+		//la validate riguarda chi può vedere il task (forse) perchè se chi puo vedere il proj puo gestire il task non c'è bisogno 
+		Project project = projectService.getProject(projectId);
+		Task task=taskService.getTask(taskId);
+		
+		
+		
+		model.addAttribute("project", project);
+		model.addAttribute("task", task);
+		return "task";
 	}
 }
