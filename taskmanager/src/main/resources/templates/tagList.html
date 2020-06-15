@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TagList</title>
+</head>
+<body>
+<h1>Lista tag:</h1>
+<div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Colore</th>
+				<th>Descrizione</th>
+				<th>Aggiungi Tag</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each ="tag : ${tagsList}">
+			
+				<td th:text="${tag.nome}"></td>
+				<td th:text="${tag.colore}"></td>
+				<td th:text="${tag.descrizione}"></td>
+				<td>
+					<form method="POST" th:action="'/projects/'+${project.id}+'/tag/add/'+${tag.id}">
+					<button type="submit" name="submit" value="value">Select</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</body>
+</html>

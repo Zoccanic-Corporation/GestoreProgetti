@@ -31,7 +31,8 @@ public class Project {
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<User> members;
 
-   //INSERIRE ONE TO MANY verso TAG
+	@OneToMany//non ci sono specifiche sul fetch type, LAZY LOAD
+	private List<Tag> tags;
 
 	@Column
 	private String description;
@@ -43,6 +44,7 @@ public class Project {
 	public Project() {
 		this.members = new ArrayList<User>();
 		this.tasks = new ArrayList<Task>();
+		this.tags = new ArrayList<Tag>();
 	}
 
 	public Project(String name, String description) {
@@ -58,7 +60,7 @@ public class Project {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}
@@ -97,37 +99,49 @@ public class Project {
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
-	
+
 	public void addTask(Task task) {
 		this.tasks.add(task);
+	}
+
+	public void addTag(Tag tag) {
+		this.tags.add(tag);
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
 	}
 
 	public void addMember(User member) {
 		this.members.add(member);
 	}
 
-	 @Override
-	    public String toString() {
+	@Override
+	public String toString() {
 
-	        return "Project{" +
-	                "id=" + id +
-	                ", name='" + name + '\'' +
-	                ", description='" + description + '\'' +
-	                ", tasks=" + tasks +
-	                '}';
-	    }
-
-	    // this is a semplification
-	    @Override
-	    public boolean equals(Object o) {
-	        if (this == o) return true;
-	        if (o == null || getClass() != o.getClass()) return false;
-	        Project project = (Project) o;
-	        return Objects.equals(name, project.name);
-	    }
-
-	    @Override
-	    public int hashCode() {
-	        return Objects.hash(name);
-	    }
+		return "Project{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", description='" + description + '\'' +
+				", tasks=" + tasks +
+				'}';
 	}
+
+	// this is a semplification
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Project project = (Project) o;
+		return Objects.equals(name, project.name);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
+	}
+}

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.taskmanager.model.Project;
+import it.uniroma3.siw.taskmanager.model.Tag;
 import it.uniroma3.siw.taskmanager.model.User;
 import it.uniroma3.siw.taskmanager.repository.ProjectRepository;
 
@@ -44,4 +45,11 @@ public class ProjectService {
 	public List<Project> retrieveProjectsOwnedBy(User user){
 		return this.projectRepository.findByOwner(user);
 	}
+	
+	@Transactional
+	public Project addTag(Project project, Tag tag) {
+		project.addTag(tag);
+		return this.projectRepository.save(project);
+	}
+	
 }
