@@ -75,14 +75,20 @@ public class TaskController {
 	
 	@RequestMapping(value = {"/projects/{projectId}/task/manage/{taskId}"}, method = RequestMethod.GET)
 	public String myTask(Model model, @PathVariable("taskId") Long taskId, @PathVariable("projectId") Long projectId){
+		
 		//la validate riguarda chi può vedere il task (forse) perchè se chi puo vedere il proj puo gestire il task non c'è bisogno 
 		Project project = projectService.getProject(projectId);
 		Task task=taskService.getTask(taskId);
+		User loggedUser = sessionData.getLoggedUser();
 		
-		
-		
+		//check ownership del progetto a cui il task è associato, ripetitivo ma impedisce che si acceda alla pagina di controllo del task tramite un URL "handmade" da chi non dovrebbe vedere il bottone "Gestisci"
+		if(this.taskValidator.isOwner(project, loggedUser)){
+		// è owner del task quindi ha accesso alla pagina
 		model.addAttribute("project", project);
-		model.addAttribute("task", task);
-		return "task";
+		model.addAttribute("task", task);		
+		return "task";		
+		}
+
+		return "redirect:/projects/"+projectId; 
 	}
 }

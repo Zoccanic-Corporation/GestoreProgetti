@@ -30,9 +30,12 @@
 			<div th:text="${task.name}"></div>
 			<div th:text="${task.description}" style="color: gray"></div>
 			<div th:text="${task.user.firstName}+' '+${task.user.lastName}"></div>
-            <form th:action="@{ '/projects/'+${project.id}+'/task/manage/'+${task.id} }" method="GET">
+            <div><form th:if="${gestione=='ok'}" th:action="@{ '/projects/'+${project.id}+'/task/manage/'+${task.id} }" method="GET">
             <button type="submit">Gestisci</button>
             </form>
+            <form>
+            <button type="submit">Commenti</button>
+            </form></div>
 		</li>
 	</ul>
 </div>

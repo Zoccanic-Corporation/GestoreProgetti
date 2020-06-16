@@ -5,7 +5,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+
 import it.uniroma3.siw.taskmanager.model.Tag;
+
 import it.uniroma3.siw.taskmanager.services.TagService;
 
 @Component
@@ -44,5 +46,5 @@ public class TagValidator implements Validator{
 	public boolean isValid(String nome) {
 		return tagService.getTagByName(nome).isEmpty();
 	}
-	
+
 }

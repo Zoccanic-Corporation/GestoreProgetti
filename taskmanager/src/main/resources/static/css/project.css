@@ -3,3 +3,6 @@
   background-color: lightblue;
   text-align: center;
 }
+form {
+    display: inline-block; //Or display: inline; 
+}

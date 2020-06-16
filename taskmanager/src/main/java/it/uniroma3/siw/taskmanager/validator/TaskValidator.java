@@ -4,7 +4,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import it.uniroma3.siw.taskmanager.model.Project;
 import it.uniroma3.siw.taskmanager.model.Task;
+import it.uniroma3.siw.taskmanager.model.User;
 
 @Component
 public class TaskValidator implements Validator {
@@ -32,6 +34,18 @@ public class TaskValidator implements Validator {
 		
 		if(description.length() > MAX_DESCRIPTION_LENGHT)
 			errors.rejectValue("description", "size");
+	}
+	
+	
+	public boolean isOwner(Project p, User u) { //se u è owner di p è owner anche del task per induzione
+		Long ownerId=p.getOwner().getId();
+		Long currentUserId=u.getId();
+		
+		if(ownerId==currentUserId)
+		return true;
+		
+		
+		return false;
 	}
 
 }

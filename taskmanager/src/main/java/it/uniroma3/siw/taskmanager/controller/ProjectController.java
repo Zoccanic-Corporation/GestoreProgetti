@@ -62,6 +62,9 @@ public class ProjectController {
 		if(!project.getOwner().equals(loggedUser) && !members.contains(loggedUser))
 			return "redirect:/projects";
 		
+		if(project.getOwner().equals(loggedUser))//diplay bottone "Gestisci"
+			model.addAttribute("gestione", "ok");
+		
 		model.addAttribute("loggedUser", loggedUser);
 		model.addAttribute("project", project);
 		model.addAttribute("members", members);

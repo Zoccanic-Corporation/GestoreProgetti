@@ -16,10 +16,10 @@
 
 <h6 th:text="'Owned by ' +${project.owner.firstName} + ' ' + ${project.owner.lastName}"> </h6>
 
-<h4><a th:href="${project.id}+''">Aggiorna task</a></h4> 
-<h4><a th:href="${project.id}+''">Cancella task</a></h4>
+<h4><a th:href="${project.id}+''">Aggiorna task</a></h4>
 <h4><a th:href="${project.id}+''">Aggiungi un tag</a></h4>
-<h4><a th:href="${project.id}+''">Commenta</a></h4>
+<h4><a th:href="${project.id}+''">Cancella task</a></h4>
+
 <footer><h4><a th:href="'/projects/'+${project.id}">Torna al progetto</a></h4></footer> 
 </body>
 </html>
