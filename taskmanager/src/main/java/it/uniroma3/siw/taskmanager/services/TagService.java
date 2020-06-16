@@ -10,12 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.taskmanager.model.Project;
 import it.uniroma3.siw.taskmanager.model.Tag;
+import it.uniroma3.siw.taskmanager.model.Task;
 import it.uniroma3.siw.taskmanager.repository.TagRepository;
 
 @Service
 public class TagService {
 @Autowired
 private TagRepository tagRepository;
+
 
 @Transactional
 public Tag saveTag(Tag tag) {
@@ -42,7 +44,7 @@ public List<Tag> getAllTags() {
     return result;
 }
 
-@Transactional
+ //non credo sia necessario sulle get/retrieve
 public List<Tag> TagsNotInProject(Project project){
     List<Tag>  allTags= this.getAllTags();
     List<Tag>  tagsOfProject= project.getTags();
@@ -53,6 +55,21 @@ public List<Tag> TagsNotInProject(Project project){
     return allTags;
 }
 
+@Transactional
+public List<Tag> TagsInProjectNotinTask(Project project, Task task){
+	List<Tag>  tagsOfProject= project.getTags();
+	List<Tag>  tagsOfTask= task.getTags();
+	if(tagsOfTask.size()!=0) {
+        for(Tag t: tagsOfTask)
+            tagsOfProject.remove(t);
+	}
+	return tagsOfProject;
+}
 
+@Transactional
+public Tag addTask(Tag tag, Task task) {
+	tag.addTask(task);
+	return this.tagRepository.save(tag);
+}
 
 }

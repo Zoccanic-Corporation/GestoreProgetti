@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import it.uniroma3.siw.taskmanager.controller.session.SessionData;
 import it.uniroma3.siw.taskmanager.model.Project;
 import it.uniroma3.siw.taskmanager.model.Tag;
+import it.uniroma3.siw.taskmanager.model.Task;
 import it.uniroma3.siw.taskmanager.services.ProjectService;
 import it.uniroma3.siw.taskmanager.services.TagService;
+import it.uniroma3.siw.taskmanager.services.TaskService;
 import it.uniroma3.siw.taskmanager.validator.TagValidator;
 
 @Controller
@@ -34,6 +36,9 @@ public class TagController {
 
 	@Autowired
 	ProjectService projectService;
+	
+	@Autowired
+	TaskService taskService;
 
 	@RequestMapping(value="/tag/add", method= RequestMethod.GET)	
 	public String tagInitialization(Model model) {
@@ -71,7 +76,26 @@ public class TagController {
 		return "redirect:/projects/"+projectId+"/tag/add"; 
 	}
 
-	
+	@RequestMapping(value="/projects/{projectId}/task/manage/{taskId}/tag/add", method= RequestMethod.GET)	
+	public String getTagsToTask(Model model, @PathVariable("projectId") Long projectId, @PathVariable("taskId") Long taskId) {
+		Project project = projectService.getProject(projectId);		
+		Task task=taskService.getTask(taskId);
+		List<Tag> tags=tagService.TagsInProjectNotinTask(project,task);
+		
+		model.addAttribute("task", task);
+		model.addAttribute("project", project);
+		model.addAttribute("projectTags", tags);
+		
+		return "addTagToTask";
+	}
 
+	@RequestMapping(value="/projects/{projectId}/task/manage/{taskId}/tag/add/{tagId}", method= RequestMethod.POST)	
+	public String setTagToTask(Model model, @PathVariable("projectId") Long projectId, @PathVariable("taskId") Long taskId, @PathVariable("tagId") Long tagId) {
+	Task task=taskService.getTask(taskId);
+	Tag tag = tagService.getTag(tagId);
+		taskService.addTag(task, tag);
+		tagService.addTask(tag, task);
+		return "redirect:/projects/"+projectId+"/task/manage/"+taskId+"/tag/add";
+	}
 }
 

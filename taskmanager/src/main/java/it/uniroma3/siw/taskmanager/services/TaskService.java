@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.uniroma3.siw.taskmanager.model.Tag;
 import it.uniroma3.siw.taskmanager.model.Task;
 import it.uniroma3.siw.taskmanager.repository.TaskRepository;
 
@@ -34,6 +35,12 @@ public class TaskService {
 	@Transactional
 	public Task setCompleted(Task task) {
 		task.setCompleted(true);
+		return this.taskRepository.save(task);
+	}
+	
+	@Transactional
+	public Task addTag(Task task, Tag tag) {
+		task.addTag(tag);
 		return this.taskRepository.save(task);
 	}
 }
