@@ -33,7 +33,7 @@
             <div><form th:if="${gestione=='ok'}" th:action="@{ '/projects/'+${project.id}+'/task/manage/'+${task.id} }" method="GET">
             <button type="submit">Gestisci</button>
             </form>
-            <form>
+            <form th:action="@{ '/projects/'+${project.id}+'/task/comment/'+${task.id} }" method="GET">
             <button type="submit">Commenti</button>
             </form></div>
 		</li>
