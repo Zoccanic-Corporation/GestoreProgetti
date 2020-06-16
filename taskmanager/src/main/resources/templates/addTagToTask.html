@@ -4,10 +4,10 @@
       xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>TagList</title>
+    <title>Add a to your task!</title>
 </head>
 <body>
-<h1>Lista tag:</h1>
+<h1>Lista tag associati al progetto:</h1>
 <div>
 	<table class="table table-hover">
 		<thead>
@@ -19,13 +19,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each ="tag : ${tagsList}">
+			<tr th:each ="tag : ${projectTags}">
 			
 				<td th:text="${tag.nome}"></td>
 				<td th:text="${tag.colore}"></td>
 				<td th:text="${tag.descrizione}"></td>
 				<td>
-					<form method="POST" th:action="'/projects/'+${project.id}+'/tag/add/'+${tag.id}">
+					<form method="POST" th:action="'/projects/'+${project.id}+'/task/manage/'+${task.id}+'/tag/add/'+${tag.id}">
 					<button type="submit" name="submit" value="value">Select</button>
 					</form>
 				</td>
@@ -34,7 +34,7 @@
 	</table>
 </div>
 <footer th:fragment="footer">
-<a th:href="'/projects/'+${project.id}">Torna indietro</a>
+<a th:href="'/projects/'+${project.id}+'/task/manage/'+${task.id}">Torna indietro</a>
 </footer>
 </body>
 </html>

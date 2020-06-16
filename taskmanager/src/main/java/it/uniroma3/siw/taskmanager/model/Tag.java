@@ -1,10 +1,14 @@
 package it.uniroma3.siw.taskmanager.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Tag {
@@ -19,10 +23,15 @@ public class Tag {
 	private String colore;
 	@Column(length = 100)
 	private String descrizone;
-
-	public Tag() {}
+    @ManyToMany(mappedBy="tags")//da controllare # tab di join
+    private List<Task> tasks;
+    
+	public Tag() {
+		this.tasks=new ArrayList<Task>();
+	}
 
 	public Tag(String nome,String colore,String descrizione) {
+		this();
 		this.nome=nome;
 		this.colore=colore;
 		this.descrizone=descrizione;
@@ -59,6 +68,18 @@ public class Tag {
 	}
 	public void setDescrizione(String desc) {
 		this.descrizone=desc;
+	}
+	
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+
+	public void addTask(Task task) {
+		this.tasks.add(task);
 	}
 	//riguardo override di equals e hashCode per ora si suppone non ci siano bisogno di mappe etc..
 }

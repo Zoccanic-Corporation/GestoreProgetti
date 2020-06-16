@@ -31,7 +31,7 @@ public class Project {
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<User> members;
 
-	@OneToMany//non ci sono specifiche sul fetch type, LAZY LOAD
+	@OneToMany(fetch=FetchType.EAGER)
 	private List<Tag> tags;
 
 	@Column

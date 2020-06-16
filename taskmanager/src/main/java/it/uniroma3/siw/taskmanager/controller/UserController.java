@@ -36,7 +36,7 @@ public class UserController {
      * @param model the Request model
      * @return the name of the target view, that in this case is "register"
      */
-    @RequestMapping(value = { "/home" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"/home"}, method = RequestMethod.GET)
     public String home(Model model) {
         User loggedUser = sessionData.getLoggedUser();
         model.addAttribute("loggedUser", loggedUser);
