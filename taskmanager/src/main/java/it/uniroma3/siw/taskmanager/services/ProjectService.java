@@ -14,11 +14,14 @@ import it.uniroma3.siw.taskmanager.model.Project;
 import it.uniroma3.siw.taskmanager.model.Tag;
 import it.uniroma3.siw.taskmanager.model.User;
 import it.uniroma3.siw.taskmanager.repository.ProjectRepository;
+import it.uniroma3.siw.taskmanager.repository.TagRepository;
 
 @Service
 public class ProjectService {
 	@Autowired
 	private ProjectRepository projectRepository;
+	@Autowired
+	private TagRepository tagRepository;
 	
 	@Transactional
 	public Project getProject(Long id) {
@@ -65,6 +68,7 @@ public class ProjectService {
 	}
 	
 	@Transactional
+
 	public List<Project> getAllProjects(){
 		List<Project> result = new ArrayList<>();
         Iterable<Project> iterable = this.projectRepository.findAll();
@@ -72,4 +76,23 @@ public class ProjectService {
             result.add(project);
         return result;
 	}
+
+	public List<Tag> findTagsByProject(Project project){
+		return this.tagRepository.findAllByProjects(project);
+	}
+	
+	/*@Transactional
+	public List<Tag> findTagsByProject(Project project){
+		List<Long> idTags = this.projectRepository.findTagsIdById(project.getId());
+		List<Tag> tags = new LinkedList<>();
+		for(Long id : idTags) {
+			Optional<Tag> appoggio = this.tagRepository.findById(id);
+			if(appoggio.isPresent())
+				tags.add(appoggio.get());
+		}
+		
+		return tags;
+	}*/
+
+
 }

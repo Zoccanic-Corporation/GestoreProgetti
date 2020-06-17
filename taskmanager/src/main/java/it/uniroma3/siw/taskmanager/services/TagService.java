@@ -17,7 +17,8 @@ import it.uniroma3.siw.taskmanager.repository.TagRepository;
 public class TagService {
 @Autowired
 private TagRepository tagRepository;
-
+@Autowired
+private ProjectService projectService;
 
 @Transactional
 public Tag saveTag(Tag tag) {
@@ -48,13 +49,14 @@ public List<Tag> getAllTags() {
 @Transactional
 public List<Tag> TagsNotInProject(Project project){
     List<Tag>  allTags= this.getAllTags();
-    List<Tag>  tagsOfProject= project.getTags();
+    List<Tag>  tagsOfProject= projectService.findTagsByProject(project);
     if(tagsOfProject.size() != 0) {
         for(Tag t: tagsOfProject)
             allTags.remove(t);
     }
     return allTags;
 }
+
 
 /*
 @Transactional
@@ -73,7 +75,7 @@ public List<Tag> TagsNotInProject(Project project){
 
 @Transactional
 public List<Tag> TagsInProjectNotinTask(Project project, Task task){
-	List<Tag>  tagsOfProject= project.getTags();
+	List<Tag>  tagsOfProject= projectService.findTagsByProject(project);
 	List<Tag>  tagsOfTask= task.getTags();
 	if(tagsOfTask.size()!=0) {
         for(Tag t: tagsOfTask)

@@ -31,7 +31,7 @@ public class Project {
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<User> members;
 
-	@OneToMany//(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany//(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Tag> tags;
 
 	@Column

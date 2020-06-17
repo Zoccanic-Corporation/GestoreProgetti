@@ -6,7 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import it.uniroma3.siw.taskmanager.model.Project;
-import it.uniroma3.siw.taskmanager.model.Tag;
 import it.uniroma3.siw.taskmanager.model.User;
 
 @Repository
@@ -15,5 +14,7 @@ public interface ProjectRepository extends CrudRepository<Project, Long>{
 	
 	public List<Project> findByOwner(User owner);
 	
+	/* @Query("SELECT pt.tags_id FROM project_tags pt where pt.project_id = :id") 
+	 public List<Long> findTagsIdById(@Param("id") Long id);*/
 	
 }
