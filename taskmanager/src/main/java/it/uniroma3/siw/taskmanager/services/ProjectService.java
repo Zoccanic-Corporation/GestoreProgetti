@@ -1,5 +1,6 @@
 package it.uniroma3.siw.taskmanager.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.uniroma3.siw.taskmanager.model.Credentials;
 import it.uniroma3.siw.taskmanager.model.Project;
 import it.uniroma3.siw.taskmanager.model.Tag;
 import it.uniroma3.siw.taskmanager.model.User;
@@ -35,12 +37,16 @@ public class ProjectService {
 	}
 	
 	@Transactional
+	public void deleteProjectById(Long Id) {
+		this.deleteProject(this.getProject(Id));
+	}
+	
+	@Transactional
 	public Project shareProjectWithUser(Project project, User user) {
 		project.addMember(user);
 		return this.projectRepository.save(project);
 	}
 	 
-	
 
 	@Transactional
 	public List<Project> retrieveProjectsOwnedBy(User user){
@@ -57,5 +63,13 @@ public class ProjectService {
 	public List<Project> findByUserVisibleProjects(User user){
 		return this.projectRepository.findByMembers(user);
 	}
-
+	
+	@Transactional
+	public List<Project> getAllProjects(){
+		List<Project> result = new ArrayList<>();
+        Iterable<Project> iterable = this.projectRepository.findAll();
+        for(Project project : iterable)
+            result.add(project);
+        return result;
+	}
 }
