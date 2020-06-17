@@ -3,11 +3,11 @@
 Gestore progetti è un sistema software. di tipo client-server, usato per la gestione dei progetti e condivisione dei task tra i vari utenti.
 
 Il sistema consente di gestire e rappresentare:
--I propri utenti, registrandosi e in seguito autenticandosi nel sistema.
--I propri progetti, creandone di nuovi e fornendo la visibilità ad altri utenti.
--I task relativi a quel progetto, inserendone di nuovi con titoli e  descrizioni e assegnandoli ai soli utenti che hanno la visibilità del progetto.
--I commenti legati ai task, nei quali ogni utente che dispone della visibilità del progetto può effettuare.
--I tag impostati ai progetti o ai task, creandone di nuovi e associando il proprio colore ad ognuno di essi.
+- I propri utenti, registrandosi e in seguito autenticandosi nel sistema.
+- I propri progetti, creandone di nuovi e fornendo la visibilità ad altri utenti.
+- I task relativi a quel progetto, inserendone di nuovi con titoli e  descrizioni e assegnandoli ai soli utenti che hanno la visibilità del progetto.
+- I commenti legati ai task, nei quali ogni utente che dispone della visibilità del progetto può effettuare.
+- I tag impostati ai progetti o ai task, creandone di nuovi e associando il proprio colore ad ognuno di essi.
 
 L'uso del sistema in questione è descritto principalmente dai seguenti casi d'uso:
 
