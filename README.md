@@ -61,12 +61,15 @@ L'uso del sistema in questione è descritto principalmente dai seguenti casi d'u
 3b.L'utente inserisce dei dati non validi. Il sistema riporta l'errore all'utente e chiede nuovamente l'inserimento.
 
 **Caso d'uso UC5:** *Inserimento nuovo commento realativo ad un task - Attore Primario: un Utente*
--Scenario principale di successo:
+
+*Scenario principale di successo:*
+
 1. L'utente si trova nella pagina del progetto
 2. L'utente sceglie l'attività "COMMENTA" relativa ad un task di progetto
 3. Il sistema mostra la lista di tutti i commenti relativi a quel task.
 4. L'utente inserisce un commento nell'apposita fotm. Il sistema mostra il commento in coda alla lista.
 - L'utente **ripete il passo 4** fino a che non indica che ha terminato
 5. Da questo momento tutti gli utenti che hanno visibilità del progetto potranno vedere i nuovi commenti inseriti.
+
 *Estensioni*
 4a. L'utente annulla l'operazione. Il sistema ***non*** registra il commento.
