@@ -4,22 +4,30 @@
 	  xmlns:th="https://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
-	<link href="../static/css/project.css" th:href="@{/css/project.css}" rel="stylesheet" />
+    <link href="../static/css/task.css" th:href="@{/css/task.css}" rel="stylesheet" />
 	<title>TaskManager</title>
 </head>
 <body>
-<div>
+
+<div class="content">
+<div class="header">
 <h1 th:text="${task.name}"></h1>
-<h4 th:text="${task.description}" style="color:gray"></h4>
-<h3 th:text="'Delegated to'+${task.user.firstName}+' '+${task.user.lastName}"></h3>
+</div>
+<br>
+<h5>Description:</h5>
+<h6 th:text="${task.description}"></h6>
+<br>
+<ul>
+<li><h3 th:text="'Delegated to '+${task.user.firstName}+' '+${task.user.lastName}"></h3></li>
+</ul>
 </div>
 
 <h6 th:text="'Owned by ' +${project.owner.firstName} + ' ' + ${project.owner.lastName}"> </h6>
-
+<div class="sidenav">
 <h4><a th:href="'/projects/'+${project.id}+'/task/update/'+${task.id}">Aggiorna task</a></h4>
 <h4><a th:href="'/projects/'+${project.id}+'/task/manage/'+${task.id}+'/tag/add'">Aggiungi un tag</a></h4>
 <h4><a th:href="'/projects/'+${project.id}+'/task/del/'+${task.id}">Cancella task</a></h4>
-
 <footer><h4><a th:href="'/projects/'+${project.id}">Torna al progetto</a></h4></footer> 
+</div>
 </body>
 </html>
