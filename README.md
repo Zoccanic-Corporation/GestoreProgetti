@@ -12,7 +12,9 @@ Il sistema consente di gestire e rappresentare:
 L'uso del sistema in questione è descritto principalmente dai seguenti casi d'uso:
 
 **Caso d'uso UC1:** *Inserimento nuovo progetto - Attore Primario: un Utente*
+
 *Scenario principale di successo*
+
 1. Un utente vuole inserire un nuovo progetto nel sistema.
 2. L'utente inserisce il suo username e la sua password. Il sistema verifica la correttezza dei dati immessi, e autentica l'Utente. Il sistema mostra quindi la Home Page con tutti i possibili comandi da poter effettuare.
 3. L'utente sceglie l'attività "Crea nuovo progetto"
@@ -25,7 +27,9 @@ L'uso del sistema in questione è descritto principalmente dai seguenti casi d'u
 3-4a.L'utente annulla l'operazione di inserimento. Il sistema ***non*** registra nessuna informazione sul progetto.
 
 **Caso d'uso UC2:** *Inserimento nuovo task - Attore Primario: un Utente*
+
 *Scenario principale di successo*
+
 1. L'utente si trova nella pagina del progetto
 2. L'utente sceglie l'attività "Crea nuovo task"
 3. L'utente inserisce nome e descrizione del task, il sistema mostra la lista degli utenti che dispongono della visibilità del progetto, l'utente quindi sceglie tra questi la persona al quale associare il task.
@@ -49,7 +53,9 @@ L'uso del sistema in questione è descritto principalmente dai seguenti casi d'u
 3-4a. L'utente annulla l'operazione. Il sistema ***non*** registra nessuna informazione sulla visibilità.
 
 **Caso d'uso UC4:** *Inserimento nuovo tag - Attore Primario: un Utente*
+
 *Scenario principale di successo*
+
 1. L'utente si trova nella Home Page.
 2. L'utente sceglie l'attività "Crea nuovo tag".
 3. L'utente inserisce Nome e Descrizione del tag. Il sistema mostra la lista di colori disponibili. L'utente seleziona uno tra questi.
