@@ -21,8 +21,8 @@ L'uso del sistema in questione è descritto principalmente dai seguenti casi d'u
 6. Da questo momento, l'utente del sistema potrà vedere nella lista dei suoi progetti, il nuovo progetto appena creato.
 
 *Estensioni*
-2a. Credenziali utente non convalidate. Il sistema richiede l'inserimento dei dati.
-3-4a. L'utente annulla l'operazione di inserimento. Il sistema ***non*** registra nessuna informazione sul progetto.
+2a.Credenziali utente non convalidate. Il sistema richiede l'inserimento dei dati.
+3-4a.L'utente annulla l'operazione di inserimento. Il sistema ***non*** registra nessuna informazione sul progetto.
 
 **Caso d'uso UC2:** *Inserimento nuovo task - Attore Primario: un Utente*
 *Scenario principale di successo*
@@ -33,6 +33,6 @@ L'uso del sistema in questione è descritto principalmente dai seguenti casi d'u
 5. Il sistema mostra nella pagina del progetto il nuovo task appena creato con le relative descrizioni e l'utente al quale è stato associato.
 
 *Estensioni*
-3a. L'utente inserisce dei dati non validi. Il sistema riporta l'errore all'utente e chiede nuovamente l'inserimento.
-3b. L'utente annulla l'operazione. Il sistema ***non*** registra nessuna informazione sul task.
+3a.L'utente inserisce dei dati non validi. Il sistema riporta l'errore all'utente e chiede nuovamente l'inserimento.
+3b.L'utente annulla l'operazione. Il sistema ***non*** registra nessuna informazione sul task.
 
