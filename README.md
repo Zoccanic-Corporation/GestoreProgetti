@@ -1,6 +1,6 @@
 # GestoreProgetti
 
-Gestore progetti è un sistema software. di tipo client-server, usato per la gestione dei progetti e condivisione dei task tra i vari utenti all'interno della stessa azienda.
+Gestore progetti è un sistema software di tipo client-server, usato per la gestione dei progetti e condivisione dei task tra i vari utenti all'interno della stessa azienda.
 
 Il sistema consente di gestire e rappresentare:
 - I propri utenti, registrandosi e in seguito autenticandosi nel sistema.
@@ -42,7 +42,7 @@ L'uso del sistema in questione è descritto principalmente dai seguenti casi d'u
 2. L'utente sceglie l'attività "Aggiungi visibilità progetto"
 3. Il sistema mostra la lista di tutti gli utenti del sistema che non hanno ancora la visibilità del progetto.
 4. L'utente sceglie l'utente al quale fornire la visibilità del progetto. Il sistema registra la scelta dell'utente.
-- L'utente ripete il passo 4 fino a che non indica che ha terminato
+- L'utente **ripete il passo 4** fino a che non indica che ha terminato
 5. Il sistema mostra nella pagina del progetto tutti gli utenti che dispongono della visibilità del progetto.
 
 *Estensioni*
