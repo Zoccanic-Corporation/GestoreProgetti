@@ -34,7 +34,8 @@
 		</tr>
 		</thead>
 		<tbody>
-			<tr th:each="proj : ${projectsShare}">
+			
+				<tr th:each="proj : ${projectsShare}">
 				<td><a th:href="'/projects/' + ${proj.id}" th:text="${proj.name}">...</a></td>
 				<td th:text="${proj.description}">...</td>
 			</tr>

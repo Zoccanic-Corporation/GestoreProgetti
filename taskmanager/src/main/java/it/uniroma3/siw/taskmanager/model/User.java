@@ -2,8 +2,6 @@ package it.uniroma3.siw.taskmanager.model;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -52,6 +50,9 @@ public class User {
    
     @ManyToMany(mappedBy = "members", fetch = FetchType.EAGER)
     private List<Project> visibleProjects;
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
     /**
      * The date that this User was created/loaded into the DB
@@ -155,7 +156,15 @@ public class User {
 
     // EQUALS AND HASHCODE
 
-    @Override
+    public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;

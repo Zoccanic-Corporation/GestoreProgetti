@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<link href="../static/css/project.css" th:href="@{/css/project.css}" rel="stylesheet" />
+	<title>TaskPage</title>
+</head>
+<body>
+<div>
+<h1 th:text="${task.name}"></h1>
+<h3 th:text="${task.description}" style="color:red"></h4>
+<h4 th:text="'Delegated to'+${task.user.firstName}+' '+${task.user.lastName}" style="color:gray"></h3>
+</div>
+
+<h6 th:text="'Owned by ' +${project.owner.firstName} + ' ' + ${project.owner.lastName}"> </h6>
+
+<div th:if="${comments.size() > 0}">
+
+	<h3>Comments: </h3>
+
+<ul th:each= "comment: ${comments}">
+	<li th:text="${comment.text}"></li>
+	<li th:text="${comment.user.firstName}+' '+${comment.user.lastName}"></li>
+</ul>
+</div>
+<div>
+<form th:action="@{ '/projects/'+${project.id}+'/task/comment/'+${task.id}}" th:object="${commentForm}" method="POST">
+<table>
+		<tr>
+			<td><label for="taskNameInput">Scrivi il commento: </label></td>
+			<td><input id=taskCommentText type="text" placeholder="COMMENT" th:field="*{text}"/></td>
+			<td th:if="${#fields.hasErrors('text')}" th:errors="*{text}" th:style="'color:red'"></td>
+			<td><button type="submit">Gestisci</button></td>
+		</tr>
+
+
+</table>
+</form>
+</div>
+<footer><h4><a th:href="'/projects/'+${project.id}">Torna al progetto</a></h4></footer> 
+</body>
+</html>
