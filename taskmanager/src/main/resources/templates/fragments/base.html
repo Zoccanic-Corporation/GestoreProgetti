@@ -2,11 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
+<link href="../static/css/bottomNav.css" th:href="@{/css/bottomNav.css}" rel="stylesheet" />
 <title>Prova</title>
 </head>
 <body>
 <footer th:fragment="footer">
-<a th:href="@{/}">Home</a>
+<div class="navbar">
+  <a href="#home" class="active">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+</div>
 </footer>
 </body>
 </html>

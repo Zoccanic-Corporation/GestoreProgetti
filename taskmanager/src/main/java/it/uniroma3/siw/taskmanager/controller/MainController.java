@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.taskmanager.controller.session.SessionData;
 import it.uniroma3.siw.taskmanager.model.Credentials;
+import it.uniroma3.siw.taskmanager.model.Project;
 import it.uniroma3.siw.taskmanager.model.User;
 import it.uniroma3.siw.taskmanager.services.CredentialsService;
+import it.uniroma3.siw.taskmanager.services.ProjectService;
 
 @Controller
 public class MainController
@@ -22,6 +24,9 @@ public class MainController
 	
 	@Autowired
 	CredentialsService credentialsService;
+	
+	@Autowired
+	ProjectService projectService;
 	
 	public MainController() {
     }
@@ -56,6 +61,23 @@ public class MainController
 		return "redirect:/admin/users";
 	}
 	
+	
+	@RequestMapping(value = {"/admin/projects"}, method = RequestMethod.GET)
+	public String projectList(Model model) {
+		User loggedUser = sessionData.getLoggedUser();
+		List<Project> allProjects = this.projectService.getAllProjects();
+	
+		model.addAttribute("loggedUser", loggedUser);
+		model.addAttribute("projectList", allProjects);
+		
+		return "allProjects";
+	}
+	
+	@RequestMapping(value = {"/admin/projects/{projectId}/delete"}, method = RequestMethod.POST)
+	public String removeProject(Model model, @PathVariable Long projectId) {
+		this.projectService.deleteProjectById(projectId);
+		return "redirect:/admin/projects";
+	}
 	
 }
 	
