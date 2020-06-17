@@ -4,16 +4,19 @@
 	  xmlns:th="https://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
+    <link href="../static/css/task.css" th:href="@{/css/task.css}" rel="stylesheet" />
 	<title>TaskManager</title>
 </head>
 <body>
+<div class="header">
 <h1>My Projects</h1>
-<div>
+</div>
+<div class="marginealto">
 	<table>
 		<thead>
 		<tr>
-			<th>Name</th>
-			<th>Description</th>
+			<h2><th>Name</th></h2>
+			<h2><th>Description</th></h2>
 		</tr>
 		</thead>
 		<tbody>
@@ -43,5 +46,6 @@
 	</table>
 	</div>
 	<a href="/home">Torna alla home</a>
+    <div><footer th:insert="fragments/base.html :: footer"></footer></div>
 </body>
 </html>
