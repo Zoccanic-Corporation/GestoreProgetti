@@ -120,7 +120,8 @@ public class TaskController {
 		*/
             Task task=taskService.getTask(taskId);
             Project project=projectService.getProject(projectId);
-            task=taskService.updateTask(task,newTask);            
+            //applicando il validate qui dovrei annullare l'operaziane in caso uno solo dei campi non vada bene, ma io volgio anullare solo l'update di quel campo, non tutta l'operazione
+            task=taskService.updateTask(task,newTask,this.taskValidator);            
             model.addAttribute("task", task);
             model.addAttribute("project", project);  		
 			return "redirect:/projects/"+project.getId()+"/task/manage/"+task.getId();	

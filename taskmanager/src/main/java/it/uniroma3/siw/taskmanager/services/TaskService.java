@@ -11,6 +11,7 @@ import it.uniroma3.siw.taskmanager.model.Tag;
 import it.uniroma3.siw.taskmanager.model.Task;
 
 import it.uniroma3.siw.taskmanager.repository.TaskRepository;
+import it.uniroma3.siw.taskmanager.validator.TaskValidator;
 
 @Service
 public class TaskService {
@@ -46,11 +47,13 @@ public class TaskService {
 	}
 	
 	@Transactional
-	public Task updateTask(Task oldTask, Task newTask) {
+	public Task updateTask(Task oldTask, Task newTask, TaskValidator v) {
 		oldTask.setCompleted(newTask.isCompleted());
-		if(!newTask.getName().isEmpty())
+		String n=newTask.getName();
+		String d=newTask.getDescription();
+		if(!n.isEmpty()&&v.validName(n))
 		oldTask.setName(newTask.getName());
-		if(!newTask.getDescription().isEmpty())
+		if(!d.isEmpty()&&v.validDescription(d))
 		oldTask.setDescription(newTask.getDescription());	
 		return this.taskRepository.save(oldTask);
 	}
