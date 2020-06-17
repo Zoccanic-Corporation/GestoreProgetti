@@ -1,0 +1,41 @@
+body {
+	background-color: #eee
+}
+
+.header {
+	padding: 5px;
+	text-align: center;
+	background: #1abc9c;
+	color: white;
+	font-size: 20px;
+}
+
+.homecenter {
+	text-align: center;
+}
+
+a,h4 {
+	background-color: #1abc9c;
+	display: inline-block;
+	color: white;
+	font-size: 125%;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h1 {
+	text-align: center;
+	color: white;
+}
+
+img {
+	margin-top: 2%; display : block;
+	margin-left: auto;
+	margin-right: auto;
+	height: 10%;
+	width: 10%;
+	display: block;
+}
