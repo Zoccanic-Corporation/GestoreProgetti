@@ -57,4 +57,5 @@ public class ProjectService {
 	public List<Project> findByUserVisibleProjects(User user){
 		return this.projectRepository.findByMembers(user);
 	}
+
 }
