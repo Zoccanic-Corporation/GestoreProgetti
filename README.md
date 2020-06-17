@@ -19,6 +19,7 @@ L'uso del sistema in questione è descritto principalmente dai seguenti casi d'u
 4. L'utente inserisce titolo e descrizione del progetto. Il sistema registra queste informazioni sul progetto, a cui associa anche un identificatore univoco.
 5. Il sistema mostra la pagina del progetto con tutti i possibili comandi da poter effettuare.
 6. Da questo momento, l'utente del sistema potrà vedere nella lista dei suoi progetti, il nuovo progetto appena creato.
+
 *Estensioni*
 2a. Credenziali utente non convalidate. Il sistema richiede l'inserimento dei dati.
 3-4a. L'utente annulla l'operazione di inserimento. Il sistema ***non*** registra nessuna informazione sul progetto.
@@ -30,6 +31,7 @@ L'uso del sistema in questione è descritto principalmente dai seguenti casi d'u
 3. L'utente inserisce nome e descrizione del task, il sistema mostra la lista degli utenti che dispongono della visibilità del progetto, l'utente quindi sceglie tra questi la persona al quale associare il task.
 4. Il sistema registra le informazioni sul task, a cui associa un identificatore univoco.
 5. Il sistema mostra nella pagina del progetto il nuovo task appena creato con le relative descrizioni e l'utente al quale è stato associato.
+
 *Estensioni*
 3a. L'utente inserisce dei dati non validi. Il sistema riporta l'errore all'utente e chiede nuovamente l'inserimento.
 3b. L'utente annulla l'operazione. Il sistema ***non*** registra nessuna informazione sul task.
