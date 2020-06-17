@@ -48,4 +48,15 @@ public class TaskValidator implements Validator {
 		return false;
 	}
 
+	public boolean validName(String name) {
+		if(name.length() < MIN_NAME_LENGHT || name.length() > MAX_NAME_LENGHT)
+			return false;
+		return true;
+	}
+	
+	public boolean validDescription(String desc) {
+		if(desc.length() > MAX_NAME_LENGHT)
+			return false;
+		return true;
+	}
 }
