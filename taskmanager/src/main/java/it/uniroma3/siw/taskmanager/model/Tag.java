@@ -22,10 +22,14 @@ public class Tag {
 	@Column(length = 20)
 	private String colore;
 	@Column(length = 100)
-	private String descrizone;
+	private String descrizione;
     @ManyToMany(mappedBy="tags")//da controllare # tab di join
     private List<Task> tasks;
+    @ManyToMany(mappedBy="tags")
+    private List<Project> projects;
     
+	
+
 	public Tag() {
 		this.tasks=new ArrayList<Task>();
 	}
@@ -34,11 +38,17 @@ public class Tag {
 		this();
 		this.nome=nome;
 		this.colore=colore;
-		this.descrizone=descrizione;
+		this.descrizione=descrizione;
 	}
 
 	//GETTERS AND SETTERS
-
+	public List<Project> getProjects() {
+		return projects;
+	}
+		
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -64,10 +74,10 @@ public class Tag {
 
 	public String getDescrizione() {
 
-		return this.descrizone;
+		return this.descrizione;
 	}
 	public void setDescrizione(String desc) {
-		this.descrizone=desc;
+		this.descrizione=desc;
 	}
 	
 	public List<Task> getTasks() {
