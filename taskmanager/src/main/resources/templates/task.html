@@ -15,17 +15,19 @@
 </div>
 <div align="center">
 <h5>• Description:</h5>
-<h6 th:text="${task.description}"></h6>
+<i th:text="'- '+${task.description}"></i>
 <br>
 <h6 th:text="'Owned by ' +${project.owner.firstName} + ' ' + ${project.owner.lastName}"></h6>
 <h3 th:text="'Delegated to '+${task.user.firstName}+' '+${task.user.lastName}"></h3>
 </div>
 
-<div class="column">
+<div align="center">
+<div class="column" >
 <h4><a th:href="'/projects/'+${project.id}+'/task/update/'+${task.id}">Aggiorna task</a></h4>
 <h4><a th:href="'/projects/'+${project.id}+'/task/manage/'+${task.id}+'/tag/add'">Aggiungi un tag</a></h4>
 <h4><a th:href="'/projects/'+${project.id}+'/task/del/'+${task.id}">Cancella task</a></h4>
 <h4><a th:href="'/projects/'+${project.id}">Torna al progetto</a></h4>
+</div>
 </div>
 
 <footer>

@@ -44,14 +44,27 @@ body {
   color: white;
 }
 
-.column {
-  margin-left: 33.33%;
-  margin-right: 33.33%;
-  float: center;
-  width: 33.33%;
+.column { 
+  width: 200px;
   padding: 10px;
   background:#3c3c3c;
 }
+
+
+.column h4 {
+ text-align: center;
+}
+
+.column a {
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.column a:hover {
+  background-color: #1abc9c;
+  color: black;
 
 .marginealto {
 	margin-top: 2%;
