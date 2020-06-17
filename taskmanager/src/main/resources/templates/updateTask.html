@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>TaskManager</title>
+</head>
+<body>
+<h1>Update your Task</h1>
+<form id = "updateTaskForm"
+	th:action="@{'/projects/'+${project.id}+'/task/update/'+${task.id}}"
+	method="POST"
+	th:object="${task}">
+
+	<table>
+		<tr>
+			<td><label for="taskNameInput">Name:*</label></td>
+			<td><input id="taskNameInput" type="text" th:field="*{name}"/></td>
+
+		</tr>
+		<tr>
+			<td><label for="taskDescriptionInput">Description:*</label></td>
+			<td><input id="taskDescriptionInput" th:field="*{description}"/></td>
+		</tr>
+		
+		<tr>
+			<td><label for="taskStatusInput">Status:</label></td>
+			<td>
+       		<select th:field="*{completed}">
+       		<option th:value="0" >In Progress</option>
+            <option th:value="1">Completed</option>
+            </select>
+        </td>
+		</tr>
+
+		<tr>
+			<td><button type="submit">Update</button></td>
+		</tr>
+	</table>
+	</form>
+	<h6>Empty fields will be ignored*</h6>
+<br>
+<footer>
+<a th:href="'/projects/'+${project.id}+'/task/manage/'+${task.id}">Torna indietro</a>
+</footer>
+</body>
+</html>

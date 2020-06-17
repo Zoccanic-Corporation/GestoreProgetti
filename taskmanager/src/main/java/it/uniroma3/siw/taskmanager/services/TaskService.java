@@ -43,4 +43,14 @@ public class TaskService {
 		task.addTag(tag);
 		return this.taskRepository.save(task);
 	}
+	
+	@Transactional
+	public Task updateTask(Task oldTask, Task newTask) {
+		oldTask.setCompleted(newTask.isCompleted());
+		if(!newTask.getName().isEmpty())
+		oldTask.setName(newTask.getName());
+		if(!newTask.getDescription().isEmpty())
+		oldTask.setDescription(newTask.getDescription());	
+		return this.taskRepository.save(oldTask);
+	}
 }

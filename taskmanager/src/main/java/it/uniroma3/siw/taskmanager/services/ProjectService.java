@@ -52,4 +52,10 @@ public class ProjectService {
 		return this.projectRepository.save(project);
 	}
 	
+	//useless
+	@Transactional
+	public Project save(Project project) {
+		return this.projectRepository.save(project);
+	}
+	
 }

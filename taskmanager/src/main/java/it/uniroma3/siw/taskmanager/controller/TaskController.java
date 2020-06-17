@@ -54,7 +54,7 @@ public class TaskController {
 	@RequestMapping(value = {"/projects/{projectId}/task/add"}, method = RequestMethod.POST)
 	public String createProject(@Valid @ModelAttribute("taskForm") Task task,
 								BindingResult taskBindingResult,
-								Model model, @PathVariable Long projectId) {
+								Model model, @PathVariable("projectId") Long projectId) {
 		User loggedUser = sessionData.getLoggedUser();
 		Project project = projectService.getProject(projectId);
 		
@@ -89,6 +89,41 @@ public class TaskController {
 		return "task";		
 		}
 
-		return "redirect:/projects/"+projectId; 
+		return "redirect:/projects/"+projectId;
 	}
+	
+	@RequestMapping(value = {"/projects/{projectId}/task/del/{taskId}"}, method = RequestMethod.GET)
+	public String deleteTask(Model model, @PathVariable("projectId") Long projectId, @PathVariable("taskId") Long taskId) {
+		Task task=taskService.getTask(taskId);
+        this.taskService.deleteTask(task);
+		return "redirect:/projects/"+projectId;
+	}
+	
+	@RequestMapping(value = {"/projects/{projectId}/task/update/{taskId}"}, method = RequestMethod.GET)
+	public String getUpdateForm(Model model, @PathVariable("projectId") Long projectId, @PathVariable("taskId") Long taskId) {
+		
+	    Task task=taskService.getTask(taskId);
+	    Project project=projectService.getProject(projectId);
+	    
+	    model.addAttribute("task", task);
+        model.addAttribute("project", project);
+		return "updateTask";
+	}
+	
+	@RequestMapping(value = {"/projects/{projectId}/task/update/{taskId}"}, method = RequestMethod.POST)
+	public String setUpdate(Model model, @PathVariable("projectId") Long projectId, @PathVariable("taskId") Long taskId, @ModelAttribute("task") Task newTask,BindingResult taskBindingResult) {
+	    /*   
+		System.out.println("-SSa ssa prova:");
+	    System.out.println(newTask.getName());
+		if(newTask.isCompleted())
+		System.out.println("è completato");
+		*/
+            Task task=taskService.getTask(taskId);
+            Project project=projectService.getProject(projectId);
+            task=taskService.updateTask(task,newTask);            
+            model.addAttribute("task", task);
+            model.addAttribute("project", project);  		
+			return "redirect:/projects/"+project.getId()+"/task/manage/"+task.getId();	
+	}
+	
 }

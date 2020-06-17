@@ -44,7 +44,8 @@ public List<Tag> getAllTags() {
     return result;
 }
 
- //non credo sia necessario sulle get/retrieve
+
+@Transactional
 public List<Tag> TagsNotInProject(Project project){
     List<Tag>  allTags= this.getAllTags();
     List<Tag>  tagsOfProject= project.getTags();
@@ -54,6 +55,21 @@ public List<Tag> TagsNotInProject(Project project){
     }
     return allTags;
 }
+
+/*
+@Transactional
+public List<Tag> TagsNotInProject(Project project){
+    List<Tag>  allTags= this.getAllTags();
+    List<Tag>  tagsOfProject= project.getTags();
+    if(tagsOfProject.size() != 0) {
+        for(Tag t: tagsOfProject) {
+        	Tag apoggino=this.getTag(t.getId());
+        	allTags.remove(apoggino);
+        }
+            
+    }
+    return allTags;
+}*/
 
 @Transactional
 public List<Tag> TagsInProjectNotinTask(Project project, Task task){

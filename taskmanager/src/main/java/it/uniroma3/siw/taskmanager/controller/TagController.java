@@ -91,10 +91,12 @@ public class TagController {
 
 	@RequestMapping(value="/projects/{projectId}/task/manage/{taskId}/tag/add/{tagId}", method= RequestMethod.POST)	
 	public String setTagToTask(Model model, @PathVariable("projectId") Long projectId, @PathVariable("taskId") Long taskId, @PathVariable("tagId") Long tagId) {
+
 	Task task=taskService.getTask(taskId);
 	Tag tag = tagService.getTag(tagId);
 		taskService.addTag(task, tag);
 		tagService.addTask(tag, task);
+
 		return "redirect:/projects/"+projectId+"/task/manage/"+taskId+"/tag/add";
 	}
 }

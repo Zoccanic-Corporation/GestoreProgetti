@@ -4,7 +4,7 @@
       xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add a to your task!</title>
+    <title>Add a tag to your task!</title>
 </head>
 <body>
 <h1>Lista tag associati al progetto:</h1>
@@ -33,7 +33,7 @@
 		</tbody>
 	</table>
 </div>
-<footer th:fragment="footer">
+<footer>
 <a th:href="'/projects/'+${project.id}+'/task/manage/'+${task.id}">Torna indietro</a>
 </footer>
 </body>
