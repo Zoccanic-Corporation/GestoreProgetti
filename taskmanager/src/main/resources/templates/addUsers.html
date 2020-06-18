@@ -4,16 +4,12 @@
       xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href="../static/css/task.css" th:href="@{/css/task.css}"
-	rel="stylesheet" />
     <title>TaskManager</title>
 </head>
 <body>
-<div class="header">
 <h1>Add user Visibility</h1>
-</div>
 <div>
-	<table class="center">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>First Name</th>
@@ -21,23 +17,19 @@
 				<th>Add</th>
 			</tr>
 		</thead>
-		
 		<tbody>
-		
 			<tr th:each ="user : ${users}">
 				<td th:text="${user.firstName}"></td>
 				<td th:text="${user.lastName}"></td>
 				<td>
 					<form method="POST" th:action="@{'/projects/'+${project.id}+'/user/add/'+${user.id}}">
-					<button type="submit" name="submit" class="button" value="value">Add</button>
+					<button type="submit" name="submit" value="value">Add</button>
 					</form>
 				</td>
 			</tr>
-			
 		</tbody>
 	</table>
 </div>
-<footer th:insert="fragments/base.html :: footer"></footer>
-
+<div> <h4><a th:href="'/projects/'+${project.id}">Torna al progetto</a></h4></div>
 </body>
 </html>
