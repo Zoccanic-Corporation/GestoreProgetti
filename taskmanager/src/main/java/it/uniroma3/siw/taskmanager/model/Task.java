@@ -58,7 +58,7 @@ public class Task {
 	@ManyToMany
 	private List<Tag> tags;
 	
-	@OneToMany(mappedBy = "task", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "task", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Comment> comments;
 
 	public Task() {

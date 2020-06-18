@@ -28,7 +28,7 @@ public class Project {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private User owner;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<User> members;
 
 	@ManyToMany//(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
@@ -37,7 +37,7 @@ public class Project {
 	@Column
 	private String description;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="project_id")
 	private List<Task> tasks;
 
