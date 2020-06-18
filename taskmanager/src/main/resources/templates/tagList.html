@@ -28,7 +28,7 @@
 			<tr th:each ="tag : ${tagsList}">
 			
 				<td th:text="${tag.nome}"></td>
-				<td th:text="${tag.colore}"></td>
+				<td ><span th:text="${tag.colore}" th:style="'color:'+${tag.colore}+';'"></span></td>
 				<td th:text="${tag.descrizione}"></td>
 				<td>
 					<form method="POST" th:action="'/projects/'+${project.id}+'/tag/add/'+${tag.id}">
