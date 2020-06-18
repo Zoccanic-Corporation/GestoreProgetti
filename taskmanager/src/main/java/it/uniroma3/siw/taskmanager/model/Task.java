@@ -52,13 +52,13 @@ public class Task {
 	@Column(nullable = false)
 	private LocalDateTime lastUpdateTimestamp;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
 
 	@ManyToMany
 	private List<Tag> tags;
 	
-	@OneToMany(mappedBy = "task", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "task", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Comment> comments;
 
 	public Task() {
