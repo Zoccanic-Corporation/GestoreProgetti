@@ -16,5 +16,5 @@ public interface ProjectRepository extends CrudRepository<Project, Long>{
 	
 	/* @Query("SELECT pt.tags_id FROM project_tags pt where pt.project_id = :id") 
 	 public List<Long> findTagsIdById(@Param("id") Long id);*/
-	
+		
 }

@@ -2,14 +2,18 @@
 <html lang="it" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="https://www.thymeleaf.org">
 <head>
-<meta charset="utf-8">
-<title>TagForm</title>
+	<meta charset="utf-8">
+    <link href="../static/css/task.css" th:href="@{/css/task.css}" rel="stylesheet" />
+	<title>TaskManager</title>
 </head>
 <body>
+<div class="header">
 	<h1>Create a new tag</h1>
+	</div>
+	
+	<div align="center" style="margin-top:2%">
 	<form id="registerTagForm" th:action="@{'/tag/add'}"
 		th:object="${tagForm}" method="POST">
-
 		<table>
 			<tr>
 				<td><label for="tagNameInput">Tag Name</label></td>
@@ -21,7 +25,7 @@
 
 			<tr>
 				<td><label for="tagDescriptionInput">Description</label></td>
-				<td><input id="tagDescriptionInput" placeholder="DESCRIPTION"
+				<td><input type="text" id="tagDescriptionInput" placeholder="DESCRIPTION"
 					th:field="*{descrizione}" /></td>
 				<td th:if="${#fields.hasErrors('descrizione')}"
 					th:errors="*{descrizione}" th:style="'color:red'"></td>
@@ -36,12 +40,11 @@
 						<option id="option-4" value="rosso">Rosso</option>
 				</select></td>
 			<tr>
-				<td><button type="submit">Register</button></td>
+				<td><button type="submit" class="button">Register</button></td>
 			</tr>
 		</table>
 	</form>
-	<footer>
-<a href="/home">Torna alla home</a>
-</footer>
+	</div>
+<footer th:insert="fragments/base.html :: footer" ></footer>
 </body>
 </html>

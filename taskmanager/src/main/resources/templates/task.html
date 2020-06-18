@@ -29,13 +29,8 @@
 <h4><a th:href="'/projects/'+${project.id}">Torna al progetto</a></h4>
 </div>
 </div>
-
-<footer>
-<div class="navbar">
-  <a href="/home" class="active">Home</a>
-  <a th:href="'/projects/'+${project.id}">Progetto</a>
+<div >
+<footer th:insert="fragments/base.html :: footer" ></footer>
 </div>
-
-</footer>
 </body>
 </html>

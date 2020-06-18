@@ -12,9 +12,9 @@
 <div class="header">
 <h1>My Projects</h1>
 </div>
-
-<div class="marginealto">
-	<table>
+<div align="center">
+<div style="margin-top: 2%;">
+	<table class="b">
 		<thead>
 		<tr>
 			<th>Name</th>
@@ -23,7 +23,7 @@
 		</thead>
 		<tbody>
 			<tr th:each="project : ${projectsList}">
-				<td><a th:href="'/projects/' + ${project.id}" th:text="${project.name}">...</a></td>
+				<td><a th:href="'/projects/' + ${project.id}" th:text="${project.name}" class="a">...</a></td>
 				<td th:text="${project.description}">...</td>
 			</tr>
 		</tbody>
@@ -31,7 +31,7 @@
 </div>
 <div th:if="${projectsShare.size() > 0}">
 <h2>Shared With You</h2>
-<table>
+<table class="b">
 		<thead>
 		<tr>
 			<th>Name</th>
@@ -40,12 +40,18 @@
 		</thead>
 		<tbody>			
 				<tr th:each="proj : ${projectsShare}">
-				<td><a th:href="'/projects/' + ${proj.id}" th:text="${proj.name}">...</a></td>
+				<td><a th:href="'/projects/' + ${proj.id}" th:text="${proj.name}" class="a">...</a></td>
+<<<<<<< HEAD
+				<td th:text="${proj.description}">...</td>
+=======
 				<td th:text="'- '+${proj.description}">...</td>
+>>>>>>> cc196f55a16c02f5988f2e7ca20c84cc3d98320a
 			</tr>
 		</tbody>
 	</table>
 	</div>
-    <div><footer th:insert="fragments/base.html :: footer"></footer></div>
+	</div>
+    <div style="margin-top: 2%"><footer th:insert="fragments/base.html :: footer"></footer></div>
+    <footer th:insert="fragments/base.html :: footer" ></footer>
 </body>
 </html>

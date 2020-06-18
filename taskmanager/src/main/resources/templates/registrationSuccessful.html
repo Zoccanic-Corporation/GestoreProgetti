@@ -3,11 +3,17 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>TaskManager</title>
+   	<meta charset="utf-8">
+<link href="../static/css/task.css" th:href="@{/css/task.css}"
+	rel="stylesheet" />
+	<title>TaskManager</title>
 </head>
 <body>
+<div class="header">
 <h1>Congratulations for registering!</h1>
-<h2>Back to <a th:href="@{/index}">Welcome Page</a></h2>
-
+</div>
+<div align="center" style="margin-top 5%"> 
+<h2>Back to <a th:href="@{/index}" class="w">Welcome Page</a></h2>
+</div>
 </body>
 </html>

@@ -6,7 +6,6 @@
 	<meta charset="utf-8">
 <link href="../static/css/task.css" th:href="@{/css/task.css}"
 	rel="stylesheet" />
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<title>TaskManager</title>
 </head>
 <body>
@@ -22,13 +21,13 @@
 	<table>
 		<tr>
 			<td><b><label for="projectNameInput">Project Name</label></b></td>
-			<td><input id=projectNameInput type="text" placeholder="NAME" required th:field="*{name}" class="w3-input w3-hover-gray"/></td>
+			<td><input id=projectNameInput type="text" placeholder="NAME" required th:field="*{name}"/></td>
 			<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:style="'color:red'"></td>
 
 		</tr>
 		<tr>
 			<td><b><label for="passwordInput">Description</label></b></td>
-			<td><input id="passwordInput" placeholder="DESCRIPTION" th:field="*{description}" class="w3-input w3-hover-gray"/></td>
+			<td><input id="passwordInput" type="text" placeholder="DESCRIPTION" th:field="*{description}"/></td>
 			<td th:if="${#fields.hasErrors('description')}" th:errors="*{description}" th:style="'color:red'"></td>
 		</tr>
 		<tr>
@@ -37,5 +36,6 @@
 	</table>
 	</form>
 	</div>
+	    <footer th:insert="fragments/base.html :: footer" ></footer>
 </body>
 </html>
