@@ -136,6 +136,20 @@ a.a:hover {
   color: #333;
 }
 
+a.w {
+    text-color: #1abc9c;
+    text-decoration: none;
+
+}
+
+a.w:visited {
+  color: #1abc9c;
+}
+
+a.w:hover {
+  color: #333;
+}
+
 input[type=text] {
   background-color: #eee;
   border: none;

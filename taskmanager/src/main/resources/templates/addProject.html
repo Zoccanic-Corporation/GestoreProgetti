@@ -27,7 +27,7 @@
 		</tr>
 		<tr>
 			<td><b><label for="passwordInput">Description</label></b></td>
-			<td><input id="passwordInput" placeholder="DESCRIPTION" th:field="*{description}"/></td>
+			<td><input id="passwordInput" type="text" placeholder="DESCRIPTION" th:field="*{description}"/></td>
 			<td th:if="${#fields.hasErrors('description')}" th:errors="*{description}" th:style="'color:red'"></td>
 		</tr>
 		<tr>
