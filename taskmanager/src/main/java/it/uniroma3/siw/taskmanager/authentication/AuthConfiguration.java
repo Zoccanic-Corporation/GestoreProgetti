@@ -1,6 +1,7 @@
 package it.uniroma3.siw.taskmanager.authentication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 // authorization paragraph: here we define WHO can access WHICH pages
                 .authorizeRequests()
                 // anyone (authenticated or not) can access the welcome page, the login page, and the registration page
-                .antMatchers(HttpMethod.GET, "/", "/index", "/login", "/users/register").permitAll()
+                .antMatchers(HttpMethod.GET, "/", "/index", "/login", "/users/register", "/css/**", "/images/**").permitAll()
                 // anyone (authenticated or not) can send POST requests to the login endpoint and the register endpoint
                 .antMatchers(HttpMethod.POST, "/login", "/users/register").permitAll()
                 // only authenticated users with ADMIN authority can access the admin pag
@@ -52,7 +53,6 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .and().formLogin()
                 // after login is successful, redirect to the logged user homepage
                 .defaultSuccessUrl("/home")
-
                 // NOTE: using the default configuration, the /login endpoint is mapped to an auto-generated login page.
                 // If we wanted to create a login page of own page, we would need to
                 // - use the .loginPage() method in this configuration
@@ -89,5 +89,9 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+    @Override
+    public void configure(WebSecurity security) {
+      security.ignoring().antMatchers("/css/", "/images/", "/js/**");
     }
 }
