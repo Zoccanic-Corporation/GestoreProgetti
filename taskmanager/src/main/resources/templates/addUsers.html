@@ -20,10 +20,8 @@
 				<th>Last Name</th>
 				<th>Add</th>
 			</tr>
-		</thead>
-		
-		<tbody>
-		
+		</thead>		
+		<tbody>		
 			<tr th:each ="user : ${users}">
 				<td th:text="${user.firstName}"></td>
 				<td th:text="${user.lastName}"></td>
