@@ -4,10 +4,16 @@
 	  xmlns:th="https://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
+<link href="../static/css/task.css" th:href="@{/css/task.css}"
+	rel="stylesheet" />
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<title>TaskManager</title>
 </head>
 <body>
+<div class="header">
 <h1>Register new Project</h1>
+</div>
+<div align="center" style="margin-top:2%;">
 <form id = "registerUserForm"
 	th:action="@{/projects/add}"
 	th:object="${projectForm}"
@@ -15,20 +21,21 @@
 
 	<table>
 		<tr>
-			<td><label for="projectNameInput">Project Name</label></td>
-			<td><input id=projectNameInput type="text" placeholder="NAME" required th:field="*{name}"/></td>
+			<td><b><label for="projectNameInput">Project Name</label></b></td>
+			<td><input id=projectNameInput type="text" placeholder="NAME" required th:field="*{name}" class="w3-input w3-hover-gray"/></td>
 			<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:style="'color:red'"></td>
 
 		</tr>
 		<tr>
-			<td><label for="passwordInput">Description</label></td>
-			<td><input id="passwordInput" placeholder="DESCRIPTION" th:field="*{description}"/></td>
+			<td><b><label for="passwordInput">Description</label></b></td>
+			<td><input id="passwordInput" placeholder="DESCRIPTION" th:field="*{description}" class="w3-input w3-hover-gray"/></td>
 			<td th:if="${#fields.hasErrors('description')}" th:errors="*{description}" th:style="'color:red'"></td>
 		</tr>
 		<tr>
-			<td><button type="submit">Register</button></td>
+			<td><button type="submit" class="button">Register</button></td>
 		</tr>
 	</table>
 	</form>
+	</div>
 </body>
 </html>
