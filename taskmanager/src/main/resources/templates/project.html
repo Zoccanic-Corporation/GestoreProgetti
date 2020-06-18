@@ -5,18 +5,22 @@
 <meta charset="utf-8">
 <link href="../static/css/task.css" th:href="@{/css/task.css}"
 	rel="stylesheet" />
+	
 <title>TaskManager</title>
 </head>
 <body>
 
-	<div class="header">
+<div class="header">
 		<h1 th:text="'•Project: '+${project.name}"></h1>
 	</div>
-	<h4 th:text="${project.description}" style="color: gray"></h4>
-	<h6
-		th:text="'Owned by ' +${project.owner.firstName} + ' ' + ${project.owner.lastName}"></h6>
+	<br>
 
-	<div th:if="${members.size() > 0}">
+<div class="row">
+    <div class="columnrow">
+	<h4 th:text="'-Description: '+${project.description}" style="color: gray"></h4>
+	<h6 th:text="'Owned by ' +${project.owner.firstName} + ' ' + ${project.owner.lastName}"></h6>
+
+	<div th:if="${members.size() > 0}" >
 		<h3>Shared with:</h3>
 		<ul>
 			<li th:each="member: ${members}">
@@ -24,30 +28,10 @@
 			</li>
 		</ul>
 	</div>
-
-	<div>
-		<h3>Tasks</h3>
-		<ul>
-			<li th:each="task: ${project.tasks}">
-				<div th:text="${task.name}"></div>
-				<div th:text="${task.description}" style="color: gray"></div>
-				<div th:text="${task.user.firstName}+' '+${task.user.lastName}"></div>
-				<div>
-					<form th:if="${gestione=='ok'}"
-						th:action="@{ '/projects/'+${project.id}+'/task/manage/'+${task.id} }"
-						method="GET">
-						<button type="submit">Gestisci</button>
-					</form>
-					<form
-						th:action="@{ '/projects/'+${project.id}+'/task/comment/'+${task.id} }"
-						method="GET">
-						<button type="submit">Commenti</button>
-					</form>
-				</div>
-			</li>
-		</ul>
 	</div>
 
+<div class="columnrow" align="center">
+<div class="column">
 	<h4>
 		<a th:href="${project.id}+'/task/add'">Aggiungi task</a>
 	</h4>
@@ -56,13 +40,37 @@
 	</h4>
 	<h4>
 		<a th:href="${project.id}+'/tag/add'">Aggiungi un tag al progetto</a>
-	</h4>
+	</h4>	
+</div>
+</div>
+<div class="columnrow" align="center">
 
-
-	<div class="navbar">
-		<a href="/home" class="active">Home</a> 
-        <a th:href="'/projects/'">Lista progetti</a>
+		<h3>Tasks:</h3>
+		
+		<div class="ptask">
+			<div th:each="task: ${project.tasks}" class="inline">
+				<h3 th:text="${task.name}"></h3>
+				<i th:text="'- '+${task.description}"></i>
+				<div th:text="${task.user.firstName}+' '+${task.user.lastName}"></div>
+				<div>
+					<form th:if="${gestione=='ok'}"
+						th:action="@{ '/projects/'+${project.id}+'/task/manage/'+${task.id} }"
+						method="GET" class="a">
+						<button type="submit" class="button">Gestisci</button>
+					</form>
+					<form
+						th:action="@{ '/projects/'+${project.id}+'/task/comment/'+${task.id} }"
+						method="GET" class="a">
+						<button type="submit" class="button">Commenti</button>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
+	
+</div>
+
+<footer th:insert="fragments/base.html :: footer"></footer>
 	
 </body>
 </html>

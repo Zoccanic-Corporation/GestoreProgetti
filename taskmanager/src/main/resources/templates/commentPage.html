@@ -10,8 +10,8 @@
 <body>
 <div>
 <h1 th:text="${task.name}"></h1>
-<h3 th:text="${task.description}" style="color:red"></h4>
-<h4 th:text="'Delegated to'+${task.user.firstName}+' '+${task.user.lastName}" style="color:gray"></h3>
+<h3 th:text="${task.description}" style="color:red"></h3>
+<h4 th:text="'Delegated to'+${task.user.firstName}+' '+${task.user.lastName}" style="color:gray"></h4>
 </div>
 
 <h6 th:text="'Owned by ' +${project.owner.firstName} + ' ' + ${project.owner.lastName}"> </h6>

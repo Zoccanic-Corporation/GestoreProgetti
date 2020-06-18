@@ -12,19 +12,21 @@
 <div class="header">
 <h1 th:text="'Welcome, ' + ${loggedUser.firstName} + '!'">Benvenuto</h1>
 </div>
-<div class="homecenter">
+
 <img src="../static/images/cartella.png" th:src="@{/images/cartella.png}"/>
-<table>
-<tr><td><h4><a href="projects" class="w3-button w3-green">My projects</a></h4> </td></tr>
-<tr><td><h4><a href="projects/add" class="w3-button w3-green">Create new project</a></h4></td></tr>
-<tr><td><h4><a href="/tag/add" class="w3-button w3-green">Create new tag</a></h4></td></tr>
-<tr><td><h4><a href="/users/me" class="w3-button w3-green">Profile</a></h4></td></tr>
-<tr><td><h4><a href="/logout" class="w3-button w3-green">Logout</a></h4></td></tr>
-</table>
-    </div>
-    
+<br><br><br>
+<div align="center">
+<div class="column">
+<a href="projects" >My projects</a>
+<a href="projects/add" >Create new project</a>
+<a href="/tag/add" >Create new tag</a>
+<a href="/users/me" >Profile</a>
+<a href="/logout" >Logout</a>
+</div>
+</div> 
+<br><br>
 <div class="footer">
-  <p>Zockanic Corporation</p>
+  <p>Zoccanic Corporation</p>
 </div>
 </body>
 </html>
