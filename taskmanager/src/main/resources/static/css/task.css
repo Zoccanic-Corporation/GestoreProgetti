@@ -183,3 +183,18 @@ input[type=password]:focus {
   background-color: #90f0cc;
    color: #333;
 }
+
+.box1 {
+background: rgb(238, 238, 238);
+width:200px;
+padding: 10px;
+box-shadow: 5px 5px 10px 2px #333333;
+-webkit-box-shadow: 5px 5px 10px 2px #333333;
+-moz-box-shadow: 5px 5px 10px 2px #333333;
+
+}
+
+  table.center {
+    margin-left:auto; 
+    margin-right:auto;
+  }
