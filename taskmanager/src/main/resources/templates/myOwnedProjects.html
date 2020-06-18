@@ -12,8 +12,8 @@
 <div class="header">
 <h1>My Projects</h1>
 </div>
-
-<div class="marginealto">
+<div align="center">
+<div style="margin-top: 2%;">
 	<table>
 		<thead>
 		<tr>
@@ -23,7 +23,7 @@
 		</thead>
 		<tbody>
 			<tr th:each="project : ${projectsList}">
-				<td><a th:href="'/projects/' + ${project.id}" th:text="${project.name}">...</a></td>
+				<td><a th:href="'/projects/' + ${project.id}" th:text="${project.name}" class="a">...</a></td>
 				<td th:text="${project.description}">...</td>
 			</tr>
 		</tbody>
@@ -40,12 +40,13 @@
 		</thead>
 		<tbody>			
 				<tr th:each="proj : ${projectsShare}">
-				<td><a th:href="'/projects/' + ${proj.id}" th:text="${proj.name}">...</a></td>
+				<td><a th:href="'/projects/' + ${proj.id}" th:text="${proj.name}" class="a">...</a></td>
 				<td th:text="'- '+${proj.description}">...</td>
 			</tr>
 		</tbody>
 	</table>
 	</div>
-    <div><footer th:insert="fragments/base.html :: footer"></footer></div>
+	</div>
+    <div style="margin-top: 2%"><footer th:insert="fragments/base.html :: footer"></footer></div>
 </body>
 </html>
