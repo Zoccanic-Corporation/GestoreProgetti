@@ -282,7 +282,7 @@ box-shadow: 5px 5px 10px 2px #333333;
 	vertical-align: bottom;
 }
 
-.center {
+.cent {
   display: flex;
   justify-content: center;
   align-items: center;
