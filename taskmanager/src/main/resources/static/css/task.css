@@ -275,3 +275,16 @@ box-shadow: 5px 5px 10px 2px #333333;
   line-height: 1.5;
   color: #797979;
 }
+
+.tagss {
+	display: inline-block;
+	margin: 4px;
+	vertical-align: bottom;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
