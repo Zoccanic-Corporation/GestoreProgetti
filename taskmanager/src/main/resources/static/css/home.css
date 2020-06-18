@@ -27,12 +27,7 @@ body {
 	text-align: center;
 }
 
-a,h4 {
-	background-color: #1abc9c;
-	display: inline-block;
-	color: white;
-	font-size: 125%;
-}
+
 
 table {
 	margin-left: auto;
@@ -48,4 +43,31 @@ img {
 	height: 10%;
 	width: 10%;
 	display: block;
+}
+
+.column { 
+  width: 200px;
+  padding: 10px;
+  background:#3c3c3c;
+  margin-bottom:5%;
+}
+
+
+.column h4 {
+ text-align: center;
+}
+
+.column a {
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.column a:hover {
+  background-color: #1abc9c;
+  color: black;
+
+.marginealto {
+	margin-top: 2%;
 }
