@@ -13,6 +13,7 @@
 <div class="header">
 <h1 th:text="'•Task: '+${task.name}"></h1>
 </div>
+
 <div align="center">
 <h5>• Description:</h5>
 <i th:text="'- '+${task.description}"></i>
@@ -21,7 +22,7 @@
 <h3 th:text="'Delegated to '+${task.user.firstName}+' '+${task.user.lastName}"></h3>
 </div>
 
-<div align="center">
+<div align="center" style="margin-bottom:10%">
 <div class="column" >
 <h4><a th:href="'/projects/'+${project.id}+'/task/update/'+${task.id}">Aggiorna task</a></h4>
 <h4><a th:href="'/projects/'+${project.id}+'/task/manage/'+${task.id}+'/tag/add'">Aggiungi un tag</a></h4>
@@ -29,7 +30,7 @@
 <h4><a th:href="'/projects/'+${project.id}">Torna al progetto</a></h4>
 </div>
 </div>
-<div >
+<div>
 <footer th:insert="fragments/base.html :: footer" ></footer>
 </div>
 </body>

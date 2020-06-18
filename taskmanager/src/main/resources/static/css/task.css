@@ -69,13 +69,32 @@ body {
   text-align: center;
 }
  
-/*.tabl {	
+table.a {	
   table-layout: fixed;
-  width: 100%; 
+  width: 100%;
+
 }
+
+table.a th,td {	
+ text-align:center;
+ border-bottom: 1px solid #333; 
+}
+
+table.b {	
+  table-layout: fixed;
+  width: 40%;
+
+}
+
+table.b th,td {	
+ text-align:center;
+ border-bottom: 1px solid #333; 
+}
+
 table.a td{
 	width:33.33%;
-}*/
+}
+
 
 .row {
   display: -webkit-flex;
@@ -151,7 +170,7 @@ a.w:hover {
 input[type=text] {
   background-color: #eee;
   border: none;
-  border-bottom: 2px solid #333;
+
 
 }
 
@@ -168,7 +187,7 @@ input[type=text]:focus {
 input[type=password] {
   background-color: #eee;
   border: none;
-  border-bottom: 2px solid #333;
+
 
 }
 
