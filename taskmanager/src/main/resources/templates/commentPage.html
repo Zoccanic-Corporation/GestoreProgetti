@@ -4,28 +4,33 @@
 	  xmlns:th="https://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
-	<link href="../static/css/project.css" th:href="@{/css/project.css}" rel="stylesheet" />
+    <link href="../static/css/task.css" th:href="@{/css/task.css}" rel="stylesheet" />
+
 	<title>TaskPage</title>
 </head>
 <body>
-<div>
+<div class="header">
 <h1 th:text="${task.name}"></h1>
-<h3 th:text="${task.description}" style="color:red"></h3>
-<h4 th:text="'Delegated to'+${task.user.firstName}+' '+${task.user.lastName}" style="color:gray"></h4>
+<h3 th:text="${task.description}"></h3>
 </div>
-
-<h6 th:text="'Owned by ' +${project.owner.firstName} + ' ' + ${project.owner.lastName}"> </h6>
-
-<div th:if="${comments.size() > 0}">
+<div align="center">
+<h4 th:text="'Delegated to '+${task.user.firstName}+' '+${task.user.lastName}" style="color:gray"></h4>
+</div>
+<div align="center" th:if="${comments.size() > 0}">
 
 	<h3>Comments: </h3>
 
-<ul th:each= "comment: ${comments}">
-	<li th:text="${comment.text}"></li>
-	<li th:text="${comment.user.firstName}+' '+${comment.user.lastName}"></li>
-</ul>
+<div  th:each= "comment: ${comments}" class="dialogbox">
+<div class="body">
+<span class="tip tip-up"></span>
+<div class="message">
+	<h5 th:text="${comment.user.firstName}+' '+${comment.user.lastName}+' '+${comment.creationTimestamp}"></h5>
+	<span th:text="${comment.text}" ></span>
 </div>
-<div>
+</div>	
+</div>
+</div>
+<div align="center">
 <form th:action="@{ '/projects/'+${project.id}+'/task/comment/'+${task.id}}" th:object="${commentForm}" method="POST">
 <table>
 		<tr>
